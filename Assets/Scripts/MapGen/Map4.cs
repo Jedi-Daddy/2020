@@ -3,6 +3,16 @@ using UnityEngine;
 
 public class Map4_Invert : MonoBehaviour
 {
+  private class PlayerPosition
+  {
+    public int x;
+    public int y;
+  }
+  private PlayerPosition _playerPosition;
+
+  public static Map4_Invert Instance;
+  private int[][] _map;
+
   private string level =
 @"1	0	0	0	6	1	0	0	0
 1	0	1	0	0	0	0	1	0
@@ -22,76 +32,50 @@ public class Map4_Invert : MonoBehaviour
   public GameObject floor_empty;
   public GameObject Parent;
 
-  public void Start()
+  public void Awake()
   {
-    var map = ReadFromFile(level);
-    for (int y = 0; y < map.Length; y++)
+    Instance = this;
+    _map = ReadFromFile(level);
+    for (int y = 0; y < _map.Length; y++)
     {
-      for (int x = 0; x < map[y].Length; x++)
+      for (int x = 0; x < _map[y].Length; x++)
       {
-          switch (map[y][x])
-          {
-            case 0:
-              var block = Instantiate(floor_valid, new Vector3(x, map.Length - y, 0), Quaternion.identity);
-              block.transform.SetParent(Parent.transform);
-              break;
-            case 1:
-              var obstacle = Instantiate(floor_obstacle, new Vector3(x, map.Length - y, 0), Quaternion.identity);
-              obstacle.transform.SetParent(Parent.transform);
-              break;
+        switch (_map[y][x])
+        {
+          case 0:
+            var block = Instantiate(floor_valid, new Vector3(x, _map.Length - y, 0), Quaternion.identity);
+            block.transform.SetParent(Parent.transform);
+            break;
+          case 1:
+            var obstacle = Instantiate(floor_obstacle, new Vector3(x, _map.Length - y, 0), Quaternion.identity);
+            obstacle.transform.SetParent(Parent.transform);
+            break;
           case 2:
-            var empty = Instantiate(floor_empty, new Vector3(x, map.Length - y, 0), Quaternion.identity);
+            var empty = Instantiate(floor_empty, new Vector3(x, _map.Length - y, 0), Quaternion.identity);
             empty.transform.SetParent(Parent.transform);
             break;
           case 5:
-            var characterBackground = Instantiate(floor_valid, new Vector3(x, map.Length - y, 0), Quaternion.identity);
+            var characterBackground = Instantiate(floor_valid, new Vector3(x, _map.Length - y, 0), Quaternion.identity);
             characterBackground.transform.SetParent(Parent.transform);
 
             var characterBlock = Instantiate(character, Vector3.zero, Quaternion.identity);
             characterBlock.transform.SetParent(Parent.transform.parent);
-            var parentRectTransform = Parent.GetComponent<RectTransform>();
             var rectTransform = characterBlock.GetComponent<RectTransform>();
-            if (rectTransform != null && parentRectTransform != null)
-            {
-              rectTransform.anchoredPosition = new Vector2(-400f, 450f) + new Vector2(x * 100, -y * 100);
-            }
+            if (rectTransform != null)
+              rectTransform.anchoredPosition = new Vector2(-_map[0].Length * 50f + 50f, _map.Length * 50f - 50f) +
+                                               new Vector2(x * 100f, -y * 100f);
+
+            _playerPosition = new PlayerPosition { x = x, y = y };
             break;
-            case 6:
-              var exit = Instantiate(floor_exit, new Vector3(x, map.Length - y, 0), Quaternion.identity);
-              exit.transform.SetParent(Parent.transform);
-              break;
-          }
-        //else
-        //{
-        //  switch (map[y][x])
-        //  {
-        //    case 0:
-        //      var block = Instantiate(floor_valid2, new Vector3(x, map.Length - y, 0), Quaternion.identity);
-        //      block.transform.SetParent(Parent.transform);
-        //      break;
-        //    case 1:
-        //      var obstacle = Instantiate(floor_obstacle2, new Vector3(x, map.Length - y, 0), Quaternion.identity);
-        //      obstacle.transform.SetParent(Parent.transform);
-        //      break;
-        //    case 5:
-        //      var characterBlock = Instantiate(character2, new Vector3(x, map.Length - y, 0), Quaternion.identity);
-        //      characterBlock.transform.SetParent(Parent.transform);
-        //      //var valid = Instantiate(floor_valid, new Vector3(-x, map.Length-y, 0), Quaternion.identity);
-        //      //valid.transform.SetParent(Parent.transform);
-        //      break;
-        //    case 6:
-        //      var exit = Instantiate(floor_exit2, new Vector3(x, map.Length - y, 0), Quaternion.identity);
-        //      exit.transform.SetParent(Parent.transform);
-        //      break;
-        //    case 9:
-        //      var empty = Instantiate(floor_empty, new Vector3(x, map.Length - y, 0), Quaternion.identity);
-        //      empty.transform.SetParent(Parent.transform);
-        //      break;
-        //  }
-        //}
+          case 6:
+            var exit = Instantiate(floor_exit, new Vector3(x, _map.Length - y, 0), Quaternion.identity);
+            exit.transform.SetParent(Parent.transform);
+            break;
+        }
       }
     }
   }
+
 
   public int[][] ReadFromFile(string level)
   {

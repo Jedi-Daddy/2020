@@ -288,9 +288,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 6100484190659089111, guid: 268b340634f3a2844a4e52f03b6ef909,
     type: 3}
-  floor_valid: {fileID: 4994680424262121197, guid: 1a1343593a2d09844988bc50c4c24a18,
+  floor_valid: {fileID: 374120334342398247, guid: c897328866d81474f826a0f023ff4429,
     type: 3}
-  floor_obstacle: {fileID: 1140685833684316081, guid: 29e353a8137ef71408ce06f4967abbd8,
+  floor_obstacle: {fileID: 2061552601629480513, guid: c0f975ed50e3e5f408533be252ca6e9c,
     type: 3}
   floor_exit: {fileID: 3499977317496749241, guid: 3aa47bdc5834ce84bb73f20e9cf8da89,
     type: 3}

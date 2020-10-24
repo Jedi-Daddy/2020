@@ -36,7 +36,6 @@ public class Map1 : MonoBehaviour
   public void Awake()
   {
     Instance = this;
-    Vector3 playerVector = new Vector3(0,0,0);
     _map = ReadFromFile(level);
     for (int y = 0; y < _map.Length; y++)
     {
