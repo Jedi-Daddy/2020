@@ -1399,7 +1399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00fd41ab6b2dc5649a2ed5965728eb22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 6100484190659089111, guid: 268b340634f3a2844a4e52f03b6ef909,
+  character: {fileID: 2781079938510528524, guid: 9afb6f24e92bc2f47beed0a972e421fd,
     type: 3}
   floor_valid: {fileID: 374120334342398247, guid: c897328866d81474f826a0f023ff4429,
     type: 3}
@@ -3172,7 +3172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd404fe7b82eef64686fc637cd0ee5ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 2781079938510528524, guid: 9afb6f24e92bc2f47beed0a972e421fd,
+  character: {fileID: 6100484190659089111, guid: 268b340634f3a2844a4e52f03b6ef909,
     type: 3}
   floor_valid: {fileID: 374120334342398247, guid: c897328866d81474f826a0f023ff4429,
     type: 3}
