@@ -47,11 +47,11 @@ public class Map3_Invert2 : MonoBehaviour, IMap
             var block = Instantiate(floor_valid, new Vector3(x, _map.Length - y, 0), Quaternion.identity);
             block.transform.SetParent(Parent.transform);
             break;
-          case 1:
+          case 2:
             var obstacle = Instantiate(floor_obstacle, new Vector3(x, _map.Length - y, 0), Quaternion.identity);
             obstacle.transform.SetParent(Parent.transform);
             break;
-          case 2:
+          case 1:
             var empty = Instantiate(floor_empty, new Vector3(x, _map.Length - y, 0), Quaternion.identity);
             empty.transform.SetParent(Parent.transform);
             break;
@@ -109,7 +109,7 @@ public class Map3_Invert2 : MonoBehaviour, IMap
       var newX = _playerPosition.x + x;
       var newY = _playerPosition.y - y;
 
-      var canGo = _map[newY][newX] != 1;
+      var canGo = _map[newY][newX] != 2;
 
       if (canGo)
       {
