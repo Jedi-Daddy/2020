@@ -1,33 +1,33 @@
 ﻿using System.Text.RegularExpressions;
 using UnityEngine;
 
-public class Map3 : MonoBehaviour
+public class Map2_Invert : MonoBehaviour
 {
   private string level =
-@"1	0	1	0	6	0	0	0	1
-1	0	0	0	0	0	1	0	1
-0	0	1	1	1	0	0	0	1
-1	0	0	0	0	1	0	1	1
-0	0	1	1	0	0	0	0	0
-0	1	1	1	1	0	1	1	0
-0	1	0	0	1	0	0	0	0
-0	0	0	0	0	1	0	1	0
-0	0	1	1	0	0	0	0	0
-1	0	0	0	5	0	1	0	1";
+@"1	1	0	1	6	0	0	0	0	
+0	0	0	1	0	0	0	1	0	
+0	1	0	0	0	1	0	1	0	
+0	0	1	0	1	0	0	0	1	
+1	0	1	0	0	0	1	0	1	
+0	0	0	0	0	1	1	0	1	
+0	1	0	0	1	1	0	0	0	
+0	1	0	1	0	0	0	1	0	
+0	0	0	0	0	1	1	0	0	
+1	1	1	0	5	0	0	0	1	";
 
   public GameObject character;
   public GameObject floor_valid;
   public GameObject floor_obstacle;
   public GameObject floor_exit;
   public GameObject Parent;
-
+  
   public void Start()
   {
     var map = ReadFromFile(level);
     for (int y = 0; y < map.Length; y++)
     {
-      for (int x = 0; x < map[y].Length; x++)
-      {
+        for (int x = 0; x < map[y].Length; x++)
+        {
           switch (map[y][x])
           {
             case 0:
@@ -77,8 +77,8 @@ public class Map3 : MonoBehaviour
         //      break;
         //  }
         //}
+        }
       }
-    }
   }
 
   public int[][] ReadFromFile(string level)

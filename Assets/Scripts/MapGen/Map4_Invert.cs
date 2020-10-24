@@ -1,19 +1,19 @@
 ﻿using System.Text.RegularExpressions;
 using UnityEngine;
 
-public class Map3 : MonoBehaviour
+public class Map4 : MonoBehaviour
 {
   private string level =
-@"1	0	1	0	6	0	0	0	1
-1	0	0	0	0	0	1	0	1
-0	0	1	1	1	0	0	0	1
-1	0	0	0	0	1	0	1	1
-0	0	1	1	0	0	0	0	0
-0	1	1	1	1	0	1	1	0
-0	1	0	0	1	0	0	0	0
-0	0	0	0	0	1	0	1	0
-0	0	1	1	0	0	0	0	0
-1	0	0	0	5	0	1	0	1";
+@"1	0	0	0	6	1	0	0	0
+1	0	1	0	0	0	0	1	0
+0	0	0	0	0	0	0	0	0
+0	1	0	0	0	0	0	0	1
+0	0	0	1	0	0	1	0	0
+0	0	0	1	0	0	0	0	0
+0	1	0	0	0	1	1	0	1
+0	1	0	0	0	0	0	0	0
+0	0	0	0	1	0	1	0	0
+0	1	0	0	5	0	1	1	0";
 
   public GameObject character;
   public GameObject floor_valid;

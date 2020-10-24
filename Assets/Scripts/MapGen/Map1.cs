@@ -5,7 +5,7 @@ using UnityEngine;
 public class Map1 : MonoBehaviour
 {
   public string level =
-@"1	1	0	1	6	0	0	0	0
+@"1	1	5	1	6	0	0	0	0
  0	0	0	1	0	0	0	1	0
  0	1	0	0	0	1	0	1	0
  0	0	1	0	1	0	0	0	1
@@ -24,6 +24,7 @@ public class Map1 : MonoBehaviour
 
   public void Start()
   {
+    Vector3 playerVector = new Vector3(0,0,0);
     var map = ReadFromFile(level);
     for (int y = 0; y < map.Length; y++)
     {
@@ -34,7 +35,6 @@ public class Map1 : MonoBehaviour
             case 0:
               var block = Instantiate(floor_valid, new Vector3(x, map.Length - y, 0), Quaternion.identity);
               block.transform.SetParent(Parent.transform);
-           
               break;
             case 1:
               var obstacle = Instantiate(floor_obstacle, new Vector3(x, map.Length - y, 0), Quaternion.identity);
@@ -42,19 +42,20 @@ public class Map1 : MonoBehaviour
               break;
             case 5:
               var characterBlock = Instantiate(character, new Vector3(x, map.Length - y, 0), Quaternion.identity);
-              characterBlock.transform.SetParent(Parent.transform);
+              //characterBlock.transform.SetParent(Parent.transform);
               var valid = Instantiate(floor_valid, new Vector3(x, map.Length-y, 0), Quaternion.identity);
               valid.transform.SetParent(Parent.transform);
-              break;
+            playerVector = new Vector3(x, map.Length - y, 0);
+            break;
             case 6:
               var exit = Instantiate(floor_exit, new Vector3(x, map.Length - y, 0), Quaternion.identity);
               exit.transform.SetParent(Parent.transform);
               break;
           }
         }
-      
-      }
     }
+    character.GetComponent<RectTransform>().position = playerVector;
+  }
 
   public int[][] ReadFromFile(string level)
   {

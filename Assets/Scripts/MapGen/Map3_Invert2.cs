@@ -1,7 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using UnityEngine;
 
-public class Map3 : MonoBehaviour
+public class Map3_Invert2 : MonoBehaviour
 {
   private string level =
 @"1	0	1	0	6	0	0	0	1
