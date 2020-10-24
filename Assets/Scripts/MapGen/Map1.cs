@@ -41,11 +41,19 @@ public class Map1 : MonoBehaviour
               obstacle.transform.SetParent(Parent.transform);
               break;
             case 5:
-              var characterBlock = Instantiate(character, new Vector3(x, map.Length - y, 0), Quaternion.identity);
-              //characterBlock.transform.SetParent(Parent.transform);
-              var valid = Instantiate(floor_valid, new Vector3(x, map.Length-y, 0), Quaternion.identity);
-              valid.transform.SetParent(Parent.transform);
-            playerVector = new Vector3(x, map.Length - y, 0);
+              var characterBackground = Instantiate(floor_valid, new Vector3(x, map.Length-y, 0), Quaternion.identity);
+              characterBackground.transform.SetParent(Parent.transform);
+              
+              var characterBlock = Instantiate(character, Vector3.zero, Quaternion.identity);
+              characterBlock.transform.SetParent(Parent.transform.parent);
+              var parentRectTransform = Parent.GetComponent<RectTransform>();
+              var rectTransform = characterBlock.GetComponent<RectTransform>();
+              if (rectTransform != null && parentRectTransform != null)
+              {
+                rectTransform.anchoredPosition = new Vector2(-400f, 450f) + new Vector2 (x * 100, -y * 100);
+              }
+
+              playerVector = new Vector3(x, map.Length - y, 0);
             break;
             case 6:
               var exit = Instantiate(floor_exit, new Vector3(x, map.Length - y, 0), Quaternion.identity);
