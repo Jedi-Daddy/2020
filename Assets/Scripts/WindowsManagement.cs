@@ -1,7 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Video;
+using Unity;
+using UnityEngine.Experimental.UIElements;
+using Assets.Scripts;
 
 public class WindowsManagement : MonoBehaviour
 {
@@ -12,16 +13,22 @@ public class WindowsManagement : MonoBehaviour
   public GameObject Intro;
   public GameObject Loading;
 
+  public GameObject Menu;
+
   private int currentLevel = 0;
 
   void Start()
     {
+    Menu.GetComponentInChildren<ButtonScript>().ActionDelegate += ShowRestart;
+    Menu.GetComponentInChildren<ButtonScriptExit>().ActionDelegate += ExitGame;
+
     //Intro.active = true;
     //Level1.active = false;
     //Level2.active = false;
     //Level3.active = false;
     //Level4.active = false;
     //Loading.active = false;
+    //Menu.active = false;
     var introVideo = Intro.GetComponentInChildren<VideoPlayer>();
     //introVideo.Play();
     //introVideo.loopPointReached += ShowLoading1;
@@ -83,42 +90,50 @@ public class WindowsManagement : MonoBehaviour
 
   public void ShowEnd()
   {
-    Intro.active = false;
     Level1.active = false;
     Level2.active = false;
     Level3.active = false;
     Level4.active = false;
-    Loading.active = true; var loadingVideo = Loading.GetComponentInChildren<VideoPlayer>();
-    loadingVideo.Play();
+    Menu.active = true;
+  }
+  public void ShowRestart()
+  {
+    Menu.active = false;
+    var loadingVideo = Loading.GetComponentInChildren<VideoPlayer>();
     switch (currentLevel)
     {
       case 1:
         var map1 = Level1.GetComponentInChildren<Map1>();
         map1.SetStartPosition();
-        loadingVideo.loopPointReached += StartLev1;
+        StartLev1(loadingVideo);
         return;
       case 2:
         var map21 = Level2.GetComponentInChildren<Map2>();
         map21.SetStartPosition();
         var map22 = Level2.GetComponentInChildren<Map2_Invert>();
         map22.SetStartPosition();
-        loadingVideo.loopPointReached += StartLev2;
+        StartLev2(loadingVideo);
         return;
       case 3:
         var map31 = Level3.GetComponentInChildren<Map3>();
         map31.SetStartPosition();
         var map32 = Level3.GetComponentInChildren<Map3_Invert2>();
         map32.SetStartPosition();
-        loadingVideo.loopPointReached += StartLev3;
+        StartLev3(loadingVideo);
         return;
       case 4:
         var map41 = Level4.GetComponentInChildren<Map4>();
         map41.SetStartPosition();
         var map42 = Level4.GetComponentInChildren<Map4_Invert>();
         map42.SetStartPosition();
-        loadingVideo.loopPointReached += StartLev4;
+        StartLev4(loadingVideo);
         return;
     }
+  }
+
+  public void ExitGame()
+  {
+    Application.Quit();
   }
 
   public void StartLev1(VideoPlayer vp)
