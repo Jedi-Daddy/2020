@@ -133,6 +133,14 @@ public class WindowsManagement : MonoBehaviour
     Level4.active = true;
     currentLevel = 4;
   }
+  public void GameEnd()
+  {
+    Intro.active = false;
+    Level1.active = false;
+    Level2.active = false;
+    Level3.active = false;
+    Level4.active = false;
+  }
 
   public void ToNextLevel()
   {
@@ -150,9 +158,10 @@ public class WindowsManagement : MonoBehaviour
       case 4:
         ShowEnd();
         return;
-
     }
   }
+
+  
 
 
   // Update is called once per frame
