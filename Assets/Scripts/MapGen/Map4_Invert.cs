@@ -130,4 +130,8 @@ public class Map4 : MonoBehaviour, IMap
   {
     return _map[_playerPosition.y][_playerPosition.x] == 6;
   }
+  public bool IsDead()
+  {
+    return _map[_playerPosition.y][_playerPosition.x] == 1;
+  }
 }

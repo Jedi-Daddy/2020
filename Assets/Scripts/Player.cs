@@ -84,7 +84,14 @@ public class Player : MonoBehaviour
       windowsManager.ToNextLevel();
       yield break;
     }
+    if (_map.IsDead())
+    {
+      isBusy = false;
+      var windowsManager = FindObjectOfType<WindowsManagement>();
+      windowsManager.ShowEnd();
+      yield break;
     }
+  }
 
     private Vector3 Direction(Vector2 distance)
     {

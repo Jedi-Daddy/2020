@@ -128,4 +128,8 @@ public class Map3_Invert2 : MonoBehaviour, IMap
   {
     return _map[_playerPosition.y][_playerPosition.x] == 6;
   }
+  public bool IsDead()
+  {
+    return _map[_playerPosition.y][_playerPosition.x] == 1;
+  }
 }

@@ -6,4 +6,5 @@ public interface IMap
 {
     bool CanGo(int x, int y);
     bool IsFinish();
+    bool IsDead();
 }
