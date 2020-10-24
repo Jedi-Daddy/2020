@@ -12,6 +12,13 @@ public class Swipe : MonoBehaviour, IEndDragHandler, IDragHandler
     private Vector2 _prevPosition;
     private Vector2 _currentPosition;
 
+    private Player[] _players;
+
+    private void Awake()
+    {
+        _players = FindObjectsOfType<Player>();
+    }
+
     public void OnEndDrag(PointerEventData eventData)
     {
         Drag(eventData);
@@ -36,8 +43,11 @@ public class Swipe : MonoBehaviour, IEndDragHandler, IDragHandler
         var velocity = (_currentPosition - _prevPosition).magnitude / Time.unscaledDeltaTime;
         if (velocity < MinVelocityThreshold)
         {
-            if (Math.Abs(_distance.x) >= MinDistanceForSwipe || Math.Abs(_distance.y) >= MinDistanceForSwipe)
-                Player.Move(_distance);
+            if (Math.Abs(_distance.x) < MinDistanceForSwipe && Math.Abs(_distance.y) < MinDistanceForSwipe)
+                return;
+
+            foreach(var player in _players)
+                player.Move(_distance);
 
             _distance = Vector2.zero;
         }

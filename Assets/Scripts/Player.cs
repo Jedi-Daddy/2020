@@ -14,10 +14,19 @@ public class Player : MonoBehaviour
     private Animator _animator;
     private Rigidbody2D _rigidbody;
 
+    private int _verticalOrientation = 1;
+    private int _horizontalOrientation = 1;
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
+    }
+
+    public void InverseOrientation(bool horizontalInversed, bool verticalInversed)
+    {
+        _verticalOrientation = verticalInversed ? -1 : 1;
+        _horizontalOrientation = horizontalInversed ? -1 : 1;
     }
 
     public void Move(Vector2 distance)
@@ -34,7 +43,7 @@ public class Player : MonoBehaviour
         var currentPosition = _rigidbody.position;
 
         var direction = Direction(distance);
-        var endPoint = currentPosition + direction * MovementDistance;
+        var endPoint = currentPosition + direction * MovementDistance * new Vector2(_verticalOrientation, _horizontalOrientation);
 
         TriggerAnimation(direction);
 
@@ -66,8 +75,8 @@ public class Player : MonoBehaviour
         var isHorizontal = Math.Abs(direction.x) > Math.Abs(direction.y);
 
         if (isHorizontal)
-            _animator.SetFloat(Horizonatal, direction.x + direction.y);
+            _animator.SetFloat(Horizonatal, direction.x * _verticalOrientation);
         else
-            _animator.SetFloat(Vertical, direction.x + direction.y);
+            _animator.SetFloat(Vertical, direction.y * _horizontalOrientation);
     }
 }
