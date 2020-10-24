@@ -16,16 +16,16 @@ public class WindowsManagement : MonoBehaviour
 
   void Start()
     {
-    //Intro.active = false;
-    //Level1.active = false;
-    //Level2.active = false;
-    //Level3.active = false;
-    //Level4.active = false;
-    //Loading.active = false;
+    Intro.active = true;
+    Level1.active = false;
+    Level2.active = false;
+    Level3.active = false;
+    Level4.active = false;
+    Loading.active = false;
     var introVideo = Intro.GetComponentInChildren<VideoPlayer>();
-    //introVideo.Play();
-    //introVideo.loopPointReached += ShowLoading1;
-    StartLev1(introVideo);
+    introVideo.Play();
+    introVideo.loopPointReached += ShowLoading1;
+    //StartLev1(introVideo);
   }
 
   public void ShowLoading1(VideoPlayer vp)
@@ -88,7 +88,23 @@ public class WindowsManagement : MonoBehaviour
     Level2.active = false;
     Level3.active = false;
     Level4.active = false;
-    Loading.active = true;
+    Loading.active = true; var loadingVideo = Loading.GetComponentInChildren<VideoPlayer>();
+    loadingVideo.Play();
+    switch (currentLevel)
+    {
+      case 1:
+        loadingVideo.loopPointReached += StartLev1;
+        return;
+      case 2:
+        loadingVideo.loopPointReached += StartLev2;
+        return;
+      case 3:
+        loadingVideo.loopPointReached += StartLev3;
+        return;
+      case 4:
+        loadingVideo.loopPointReached += StartLev4;
+        return;
+    }
   }
 
   public void StartLev1(VideoPlayer vp)
