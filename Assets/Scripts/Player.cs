@@ -107,7 +107,10 @@ public class Player : MonoBehaviour
         yield return null;
 
         if (_map.IsDead(_playerPosition.x, _playerPosition.y))
+        {
             _animator.SetTrigger("Dead");
+            SoundSystem.Instance.Play("Game Over");
+        }
 
         yield return null;
     }
