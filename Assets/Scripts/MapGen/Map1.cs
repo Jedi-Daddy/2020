@@ -1,7 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using UnityEngine;
 
-public class Map1 : MonoBehaviour
+public class Map1 : MonoBehaviour, IMap
 {
     private class PlayerPosition
     {
@@ -27,6 +27,7 @@ public class Map1 : MonoBehaviour
   public GameObject floor_exit;
   public GameObject floor_empty;
   public GameObject Parent;
+    public Swipe Swipe;
 
     private int[][] _map;
     private PlayerPosition _playerPosition;
@@ -65,7 +66,8 @@ public class Map1 : MonoBehaviour
             if (rectTransform != null)
               rectTransform.anchoredPosition = new Vector2(-_map[0].Length * 50f + 50f, _map.Length * 50f - 50f) +
                                                new Vector2(x * 100f, -y * 100f);
-
+            
+            characterBlock.GetComponentInChildren<Player>().SetMap(this);
             _playerPosition = new PlayerPosition { x = x, y = y };
             break;
           case 6:
@@ -76,9 +78,13 @@ public class Map1 : MonoBehaviour
         }
       }
     }
- 
 
-  public int[][] ReadFromFile(string level)
+    private void OnEnable()
+    {
+        Swipe.FindPlayers();
+    }
+
+    public int[][] ReadFromFile(string level)
   {
     level = level.Replace("\t", "").Replace(" ", "");
     string[] lines = Regex.Split(level, "\r\n");

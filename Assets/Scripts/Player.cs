@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     private int _horizontalOrientation = 1;
 
     private Coroutine _coroutine;
+    public IMap _map;
 
     private void Awake()
     {
@@ -29,6 +30,11 @@ public class Player : MonoBehaviour
     {
         _verticalOrientation = verticalInversed ? -1 : 1;
         _horizontalOrientation = horizontalInversed ? -1 : 1;
+    }
+
+    public void SetMap(IMap map)
+    {
+        _map = map;
     }
 
     public void Move(Vector2 distance)
@@ -50,7 +56,7 @@ public class Player : MonoBehaviour
         var direction = Direction(distance);
         var endPoint = currentPosition + Vector3.Scale(direction, new Vector3(_verticalOrientation, _horizontalOrientation, 0)) * MovementDistance;
 
-        if (!Map1.Instance.CanGo((int)direction.x * _verticalOrientation, (int)direction.y * _horizontalOrientation))
+        if (!_map.CanGo((int)direction.x * _verticalOrientation, (int)direction.y * _horizontalOrientation))
         {
             isBusy = false;
             yield break;

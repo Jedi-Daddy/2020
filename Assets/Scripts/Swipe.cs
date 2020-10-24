@@ -15,7 +15,11 @@ public class Swipe : MonoBehaviour, IEndDragHandler, IDragHandler
     private Player[] _players;
     private void Start()
     {
-        _players = FindObjectsOfType<Player>().Where(x => x.isActiveAndEnabled).ToArray();
+    }
+
+    public void FindPlayers()
+    {
+        _players = transform.parent.GetComponentsInChildren<Player>().Where(x => x.isActiveAndEnabled).ToArray();
     }
 
     public void OnEndDrag(PointerEventData eventData)

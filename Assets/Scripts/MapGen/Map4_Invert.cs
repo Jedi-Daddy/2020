@@ -1,7 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using UnityEngine;
 
-public class Map4 : MonoBehaviour
+public class Map4 : MonoBehaviour, IMap
 {
   private class PlayerPosition
   {
@@ -31,8 +31,9 @@ public class Map4 : MonoBehaviour
   public GameObject floor_exit;
   public GameObject floor_empty;
   public GameObject Parent;
+    public Swipe Swipe;
 
-  public void Awake()
+    public void Awake()
   {
     Instance = this;
     _map = ReadFromFile(level);
@@ -65,6 +66,7 @@ public class Map4 : MonoBehaviour
               rectTransform.anchoredPosition = new Vector2(-_map[0].Length * 50f + 50f, _map.Length * 50f - 50f) +
                                                new Vector2(x * 100f, -y * 100f);
 
+            characterBlock.GetComponentInChildren<Player>().SetMap(this);
             _playerPosition = new PlayerPosition { x = x, y = y };
             break;
           case 6:
@@ -74,10 +76,15 @@ public class Map4 : MonoBehaviour
         }
       }
     }
-  }
+    }
+
+    private void OnEnable()
+    {
+        Swipe.FindPlayers();
+    }
 
 
-  public int[][] ReadFromFile(string level)
+    public int[][] ReadFromFile(string level)
   {
     level = level.Replace("\t", "").Replace(" ", "");
     string[] lines = Regex.Split(level, "\r\n");
@@ -94,5 +101,21 @@ public class Map4 : MonoBehaviour
       }
     }
     return map;
-  }
+    }
+
+    public bool CanGo(int x, int y)
+    {
+        var newX = _playerPosition.x + x;
+        var newY = _playerPosition.y - y;
+
+        var canGo = _map[newY][newX] != 1;
+
+        if (canGo)
+        {
+            _playerPosition.x = newX;
+            _playerPosition.y = newY;
+        }
+
+        return canGo;
+    }
 }
