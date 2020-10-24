@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class Map2 : MonoBehaviour, IMap
@@ -101,19 +102,30 @@ public class Map2 : MonoBehaviour, IMap
     return map;
     }
 
-    public bool CanGo(int x, int y)
+  public bool CanGo(int x, int y)
+  {
+    try
     {
-        var newX = _playerPosition.x + x;
-        var newY = _playerPosition.y - y;
+      var newX = _playerPosition.x + x;
+      var newY = _playerPosition.y - y;
 
-        var canGo = _map[newY][newX] != 1;
+      var canGo = _map[newY][newX] != 1;
 
-        if (canGo)
-        {
-            _playerPosition.x = newX;
-            _playerPosition.y = newY;
-        }
+      if (canGo)
+      {
+        _playerPosition.x = newX;
+        _playerPosition.y = newY;
+      }
 
-        return canGo;
+      return canGo;
     }
+    catch (Exception ex)
+    {
+      return false;
+    }
+  }
+  public bool IsFinish()
+  {
+    return _map[_playerPosition.y][_playerPosition.x] == 6;
+  }
 }

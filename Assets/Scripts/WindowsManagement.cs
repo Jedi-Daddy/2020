@@ -16,15 +16,16 @@ public class WindowsManagement : MonoBehaviour
 
   void Start()
     {
-    Intro.active = false;
-    Level1.active = false;
-    Level2.active = true;
-    Level3.active = false;
-    Level4.active = false;
-    Loading.active = false;
-    //var introVideo = Intro.GetComponentInChildren<VideoPlayer>();
+    //Intro.active = false;
+    //Level1.active = false;
+    //Level2.active = false;
+    //Level3.active = false;
+    //Level4.active = false;
+    //Loading.active = false;
+    var introVideo = Intro.GetComponentInChildren<VideoPlayer>();
     //introVideo.Play();
     //introVideo.loopPointReached += ShowLoading1;
+    StartLev1(introVideo);
   }
 
   public void ShowLoading1(VideoPlayer vp)
@@ -109,6 +110,7 @@ public class WindowsManagement : MonoBehaviour
     Level2.active = true;
     Level3.active = false;
     Level4.active = false;
+    Loading.active = false;
     currentLevel = 2;
   }
 
@@ -120,6 +122,7 @@ public class WindowsManagement : MonoBehaviour
     Level2.active = false;
     Level3.active = true;
     Level4.active = false;
+    Loading.active = false;
     currentLevel = 3;
   }
 
@@ -131,6 +134,7 @@ public class WindowsManagement : MonoBehaviour
     Level2.active = false;
     Level3.active = false;
     Level4.active = true;
+    Loading.active = false;
     currentLevel = 4;
   }
   public void GameEnd()

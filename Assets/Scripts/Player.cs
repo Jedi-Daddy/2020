@@ -77,6 +77,13 @@ public class Player : MonoBehaviour
         _rectTransform.localPosition = endPoint;
         _coroutine = null;
         isBusy = false;
+    if(_map.IsFinish())
+      {
+      isBusy = false;
+      var windowsManager = FindObjectOfType<WindowsManagement>();
+      windowsManager.ToNextLevel();
+      yield break;
+    }
     }
 
     private Vector3 Direction(Vector2 distance)

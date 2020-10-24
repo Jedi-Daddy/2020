@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class Map4 : MonoBehaviour, IMap
@@ -31,9 +32,9 @@ public class Map4 : MonoBehaviour, IMap
   public GameObject floor_exit;
   public GameObject floor_empty;
   public GameObject Parent;
-    public Swipe Swipe;
+  public Swipe Swipe;
 
-    public void Awake()
+  public void Awake()
   {
     Instance = this;
     _map = ReadFromFile(level);
@@ -76,15 +77,15 @@ public class Map4 : MonoBehaviour, IMap
         }
       }
     }
-    }
+  }
 
-    private void OnEnable()
-    {
-        Swipe.FindPlayers();
-    }
+  private void OnEnable()
+  {
+    Swipe.FindPlayers();
+  }
 
 
-    public int[][] ReadFromFile(string level)
+  public int[][] ReadFromFile(string level)
   {
     level = level.Replace("\t", "").Replace(" ", "");
     string[] lines = Regex.Split(level, "\r\n");
@@ -101,21 +102,32 @@ public class Map4 : MonoBehaviour, IMap
       }
     }
     return map;
-    }
+  }
 
-    public bool CanGo(int x, int y)
+  public bool CanGo(int x, int y)
+  {
+    try
     {
-        var newX = _playerPosition.x + x;
-        var newY = _playerPosition.y - y;
+      var newX = _playerPosition.x + x;
+      var newY = _playerPosition.y - y;
 
-        var canGo = _map[newY][newX] != 1;
+      var canGo = _map[newY][newX] != 1;
 
-        if (canGo)
-        {
-            _playerPosition.x = newX;
-            _playerPosition.y = newY;
-        }
+      if (canGo)
+      {
+        _playerPosition.x = newX;
+        _playerPosition.y = newY;
+      }
 
-        return canGo;
+      return canGo;
     }
+    catch (Exception ex)
+    {
+      return false;
+    }
+  }
+  public bool IsFinish()
+  {
+    return _map[_playerPosition.y][_playerPosition.x] == 6;
+  }
 }
