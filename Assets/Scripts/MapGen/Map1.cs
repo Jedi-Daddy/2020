@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Colliders;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class Map1 : MonoBehaviour
@@ -25,12 +24,12 @@ public class Map1 : MonoBehaviour
 
   public void Start()
   {
-    Vector3 playerVector = new Vector3(0,0,0);
+    Vector3 playerVector = new Vector3(0, 0, 0);
     var map = ReadFromFile(level);
     for (int y = 0; y < map.Length; y++)
     {
-        for (int x = 0; x < map[y].Length; x++)
-        {
+      for (int x = 0; x < map[y].Length; x++)
+      {
           switch (map[y][x])
           {
             case 0:
@@ -57,17 +56,14 @@ public class Map1 : MonoBehaviour
               {
                 rectTransform.anchoredPosition = new Vector2(-400f, 450f) + new Vector2 (x * 100, -y * 100);
               }
-
-              //playerVector = new Vector3(x, map.Length - y, 0);
             break;
-            case 6:
-              var exit = Instantiate(floor_exit, new Vector3(x, map.Length - y, 0), Quaternion.identity);
-              exit.transform.SetParent(Parent.transform);
-              break;
-          }
+          case 6:
+            var exit = Instantiate(floor_exit, new Vector3(x, map.Length - y, 0), Quaternion.identity);
+            exit.transform.SetParent(Parent.transform);
+            break;
         }
+      }
     }
-    //character.GetComponent<RectTransform>().position = playerVector;
   }
 
   public int[][] ReadFromFile(string level)
@@ -86,6 +82,7 @@ public class Map1 : MonoBehaviour
         map[i][j] = int.Parse(lines[i][j].ToString());
       }
     }
+
     return map;
   }
 }
