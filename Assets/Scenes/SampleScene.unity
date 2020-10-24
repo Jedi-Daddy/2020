@@ -294,7 +294,7 @@ MonoBehaviour:
     type: 3}
   floor_exit: {fileID: 3499977317496749241, guid: 3aa47bdc5834ce84bb73f20e9cf8da89,
     type: 3}
-  floor_empty: {fileID: 1140685833684316081, guid: 07b6a421d8095ac4fa83262856c86af4,
+  floor_empty: {fileID: 2430582880941408879, guid: e06b3fb6979f4804881d3b0955b8bb52,
     type: 3}
   Parent: {fileID: 160134534}
 --- !u!114 &160134537
@@ -331,7 +331,6 @@ GameObject:
   m_Component:
   - component: {fileID: 258612819}
   - component: {fileID: 258612821}
-  - component: {fileID: 258612820}
   - component: {fileID: 258612822}
   m_Layer: 5
   m_Name: Level
@@ -359,18 +358,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 900, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &258612820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 258612818}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b52861c13382500459a086012da640c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &258612821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,7 +402,7 @@ MonoBehaviour:
     type: 3}
   floor_exit: {fileID: 3499977317496749241, guid: 3aa47bdc5834ce84bb73f20e9cf8da89,
     type: 3}
-  floor_empty: {fileID: 1140685833684316081, guid: 07b6a421d8095ac4fa83262856c86af4,
+  floor_empty: {fileID: 2430582880941408879, guid: e06b3fb6979f4804881d3b0955b8bb52,
     type: 3}
   Parent: {fileID: 258612818}
 --- !u!1 &326901946
@@ -572,7 +559,7 @@ MonoBehaviour:
     type: 3}
   floor_exit: {fileID: 3499977317496749241, guid: 3aa47bdc5834ce84bb73f20e9cf8da89,
     type: 3}
-  floor_empty: {fileID: 1140685833684316081, guid: 07b6a421d8095ac4fa83262856c86af4,
+  floor_empty: {fileID: 2430582880941408879, guid: e06b3fb6979f4804881d3b0955b8bb52,
     type: 3}
   Parent: {fileID: 460931148}
 --- !u!114 &460931151
@@ -806,7 +793,7 @@ MonoBehaviour:
     type: 3}
   floor_exit: {fileID: 3499977317496749241, guid: 3aa47bdc5834ce84bb73f20e9cf8da89,
     type: 3}
-  floor_empty: {fileID: 1140685833684316081, guid: ba3ee34cf40b37b44903a2ec56383ff4,
+  floor_empty: {fileID: 2430582880941408879, guid: e06b3fb6979f4804881d3b0955b8bb52,
     type: 3}
   Parent: {fileID: 499130865}
 --- !u!114 &499130868
@@ -1770,7 +1757,7 @@ MonoBehaviour:
     type: 3}
   floor_exit: {fileID: 3499977317496749241, guid: 3aa47bdc5834ce84bb73f20e9cf8da89,
     type: 3}
-  floor_empty: {fileID: 1140685833684316081, guid: ba3ee34cf40b37b44903a2ec56383ff4,
+  floor_empty: {fileID: 2430582880941408879, guid: e06b3fb6979f4804881d3b0955b8bb52,
     type: 3}
   Parent: {fileID: 1342754186}
 --- !u!114 &1342754189
@@ -2019,7 +2006,7 @@ MonoBehaviour:
     type: 3}
   floor_exit: {fileID: 3499977317496749241, guid: 3aa47bdc5834ce84bb73f20e9cf8da89,
     type: 3}
-  floor_empty: {fileID: 1140685833684316081, guid: ba3ee34cf40b37b44903a2ec56383ff4,
+  floor_empty: {fileID: 2430582880941408879, guid: e06b3fb6979f4804881d3b0955b8bb52,
     type: 3}
   Parent: {fileID: 1705634193}
 --- !u!114 &1705634196
@@ -2154,7 +2141,7 @@ MonoBehaviour:
     type: 3}
   floor_exit: {fileID: 3499977317496749241, guid: 3aa47bdc5834ce84bb73f20e9cf8da89,
     type: 3}
-  floor_empty: {fileID: 1140685833684316081, guid: ba3ee34cf40b37b44903a2ec56383ff4,
+  floor_empty: {fileID: 2430582880941408879, guid: e06b3fb6979f4804881d3b0955b8bb52,
     type: 3}
   Parent: {fileID: 1766027613}
 --- !u!114 &1766027616
