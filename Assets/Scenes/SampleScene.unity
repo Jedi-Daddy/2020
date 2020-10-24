@@ -415,7 +415,7 @@ MonoBehaviour:
     type: 3}
   floor_exit: {fileID: 3499977317496749241, guid: 3aa47bdc5834ce84bb73f20e9cf8da89,
     type: 3}
-  floor_empty: {fileID: 2061552601629480513, guid: afa40585e48b43c4e8a375231697808a,
+  floor_empty: {fileID: 1140685833684316081, guid: ba3ee34cf40b37b44903a2ec56383ff4,
     type: 3}
   Parent: {fileID: 258612818}
 --- !u!1 &326901946
@@ -806,7 +806,7 @@ MonoBehaviour:
     type: 3}
   floor_exit: {fileID: 3499977317496749241, guid: 3aa47bdc5834ce84bb73f20e9cf8da89,
     type: 3}
-  floor_empty: {fileID: 2061552601629480513, guid: afa40585e48b43c4e8a375231697808a,
+  floor_empty: {fileID: 1140685833684316081, guid: ba3ee34cf40b37b44903a2ec56383ff4,
     type: 3}
   Parent: {fileID: 499130865}
 --- !u!114 &499130868
@@ -1770,7 +1770,7 @@ MonoBehaviour:
     type: 3}
   floor_exit: {fileID: 3499977317496749241, guid: 3aa47bdc5834ce84bb73f20e9cf8da89,
     type: 3}
-  floor_empty: {fileID: 2061552601629480513, guid: afa40585e48b43c4e8a375231697808a,
+  floor_empty: {fileID: 1140685833684316081, guid: ba3ee34cf40b37b44903a2ec56383ff4,
     type: 3}
   Parent: {fileID: 1342754186}
 --- !u!114 &1342754189
@@ -2154,7 +2154,7 @@ MonoBehaviour:
     type: 3}
   floor_exit: {fileID: 3499977317496749241, guid: 3aa47bdc5834ce84bb73f20e9cf8da89,
     type: 3}
-  floor_empty: {fileID: 2061552601629480513, guid: afa40585e48b43c4e8a375231697808a,
+  floor_empty: {fileID: 1140685833684316081, guid: ba3ee34cf40b37b44903a2ec56383ff4,
     type: 3}
   Parent: {fileID: 1766027613}
 --- !u!114 &1766027616
