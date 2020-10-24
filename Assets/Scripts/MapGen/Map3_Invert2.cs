@@ -15,16 +15,16 @@ public class Map3_Invert2 : MonoBehaviour, IMap
   private int[][] _map;
 
   private string level =
-@"2	0	1	1	6	0	1	0	
-0	0	0	0	0	0	0	0	
+@"2	0	1	1	6	0	1	0	1
+0	0	0	0	0	0	0	0	0
 1	0	0	0	2	1	0	2	0
-0	0	0	2	0	0	0	0	0
-1	2	0	0	0	1	0	0	
-0	2	0	1	0	2	1	2	
-0	1	0	2	1	0	0	1	
-0	0	0	0	0	0	0	0	
-0	0	1	0	0	2	1	0	
-2	1	2	0	5	2	2	1	";
+0	0	0	2	0	0	0	0	2
+1	2	0	0	0	1	0	0	0
+0	2	0	1	0	2	1	2	0
+0	1	0	2	1	0	0	1	0
+0	0	0	0	0	0	0	0	0
+0	0	1	0	0	2	1	0	0
+2	1	2	0	5	2	2	1	1";
 
   public GameObject character;
   public GameObject floor_valid;

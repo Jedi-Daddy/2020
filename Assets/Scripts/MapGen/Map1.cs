@@ -10,7 +10,7 @@ public class Map1 : MonoBehaviour, IMap
         public int y;
     }
 
-  public string level =
+  private string level =
 @"0	0	0	1	6	0	1	2	2
 0	2	0	0	0	0	0	0	2
 1	2	0	2	2	2	1	1	0
