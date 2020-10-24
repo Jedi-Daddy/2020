@@ -144,7 +144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00fd41ab6b2dc5649a2ed5965728eb22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: "1\t0\t0\t0\t6\t1\t0\t0\t0\r\n1\t0\t1\t0\t0\t0\t0\t1\t0\r\n0\t0\t0\t0\t0\t0\t0\t0\t0\r\n0\t1\t0\t0\t0\t0\t0\t0\t1\r\n0\t0\t0\t1\t0\t0\t1\t0\t0\r\n0\t0\t0\t1\t0\t0\t0\t0\t0\r\n0\t1\t0\t0\t0\t1\t1\t0\t1\r\n0\t1\t0\t0\t0\t0\t0\t0\t0\r\n0\t0\t0\t0\t1\t0\t1\t0\t0\r\n0\t1\t0\t0\t5\t0\t1\t1\t0"
   character: {fileID: 2110152894795466742, guid: cc0d518fd8e9dd2489aa78220c6dcf77,
     type: 3}
   floor_valid: {fileID: 4994680424262121197, guid: 1a1343593a2d09844988bc50c4c24a18,
@@ -254,6 +253,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -269,6 +269,22 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81ee9090fb0ae6f4d8ca7bdb4ff521f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Level1: {fileID: 1847172511}
+  Level2: {fileID: 1906060064}
+  Level3: {fileID: 1112376366}
+  Level4: {fileID: 484453749}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -423,7 +439,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 192d68ee39e8af3419bc3dde7733c338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: "1\t0\t1\t0\t6\t0\t0\t0\t1\r\n1\t0\t0\t0\t0\t0\t1\t0\t1\r\n0\t0\t1\t1\t1\t0\t0\t0\t1\r\n1\t0\t0\t0\t0\t1\t0\t1\t1\r\n0\t0\t1\t1\t0\t0\t0\t0\t0\r\n0\t1\t1\t1\t1\t0\t1\t1\t0\r\n0\t1\t0\t0\t1\t0\t0\t0\t0\r\n0\t0\t0\t0\t0\t1\t0\t1\t0\r\n0\t0\t1\t1\t0\t0\t0\t0\t0\r\n1\t0\t0\t0\t5\t0\t1\t0\t1"
   character: {fileID: 2110152894795466742, guid: cc0d518fd8e9dd2489aa78220c6dcf77,
     type: 3}
   floor_valid: {fileID: 4994680424262121197, guid: 1a1343593a2d09844988bc50c4c24a18,
@@ -757,7 +772,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a778ba300a5076e45ba79e7688f0c7c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: "1\t1\t0\t1\t6\t0\t0\t0\t0\t10\t0\t0\t0\t1\t6\t0\t0\t0\t1\r\n0\t0\t0\t1\t0\t0\t0\t1\t0\t10\t0\t1\t0\t0\t1\t1\t0\t0\t1\r\n0\t1\t0\t0\t0\t1\t0\t1\t0\t10\t1\t0\t0\t0\t0\t0\t0\t1\t0\r\n0\t0\t1\t0\t1\t0\t0\t0\t1\t10\t0\t0\t1\t1\t1\t0\t0\t0\t1\r\n1\t0\t1\t0\t0\t0\t1\t0\t1\t10\t1\t0\t1\t0\t0\t0\t1\t0\t0\r\n0\t0\t0\t0\t0\t1\t1\t0\t1\t10\t0\t0\t0\t0\t1\t0\t0\t0\t0\r\n0\t1\t0\t0\t1\t1\t0\t0\t0\t10\t0\t0\t1\t0\t0\t1\t0\t1\t0\r\n0\t1\t0\t1\t0\t0\t0\t1\t0\t10\t0\t1\t0\t0\t0\t1\t0\t0\t1\r\n0\t0\t0\t0\t0\t1\t1\t0\t0\t10\t0\t0\t0\t0\t0\t1\t1\t0\t1\r\n1\t1\t1\t0\t5\t0\t0\t0\t1\t10\t1\t1\t1\t0\t5\t1\t0\t0\t0"
   character: {fileID: 2110152894795466742, guid: cc0d518fd8e9dd2489aa78220c6dcf77,
     type: 3}
   floor_valid: {fileID: 4994680424262121197, guid: 1a1343593a2d09844988bc50c4c24a18,

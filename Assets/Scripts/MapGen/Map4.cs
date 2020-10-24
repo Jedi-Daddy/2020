@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Map4 : MonoBehaviour
 {
-  public string level =
+  private string level =
 @"1	0	0	0	6	1	0	0	0
 1	0	1	0	0	0	0	1	0
 0	0	0	0	0	0	0	0	0
@@ -32,60 +32,61 @@ public class Map4 : MonoBehaviour
     var map = ReadFromFile(level);
     for (int y = 0; y < map.Length; y++)
     {
-      if (y < 9)
+      for (int x = 0; x < map[y].Length; x++)
       {
-        for (int x = 0; x < map[y].Length; x++)
+        if (x < 9)
         {
           switch (map[y][x])
           {
             case 0:
-              var block = Instantiate(floor_valid, new Vector3(map[y].Length - x, map.Length - y, 0), Quaternion.identity);
+              var block = Instantiate(floor_valid, new Vector3(x, map.Length - y, 0), Quaternion.identity);
               block.transform.SetParent(Parent.transform);
               break;
             case 1:
-              var obstacle = Instantiate(floor_obstacle, new Vector3(map[y].Length - x, map.Length - y, 0), Quaternion.identity);
+              var obstacle = Instantiate(floor_obstacle, new Vector3(x, map.Length - y, 0), Quaternion.identity);
               obstacle.transform.SetParent(Parent.transform);
               break;
             case 5:
-              var characterBlock = Instantiate(character, new Vector3(map[y].Length - x, map.Length - y, 0), Quaternion.identity);
+              var characterBlock = Instantiate(character, new Vector3(x, map.Length - y, 0), Quaternion.identity);
               characterBlock.transform.SetParent(Parent.transform);
-              //var valid = Instantiate(floor_valid, new Vector3(map[y].Length-x, map.Length-y, 0), Quaternion.identity);
+              //var valid = Instantiate(floor_valid, new Vector3(x, map.Length-y, 0), Quaternion.identity);
               //valid.transform.SetParent(Parent.transform);
               break;
             case 6:
-              var exit = Instantiate(floor_exit, new Vector3(map[y].Length - x, map.Length - y, 0), Quaternion.identity);
+              var exit = Instantiate(floor_exit, new Vector3(x, map.Length - y, 0), Quaternion.identity);
               exit.transform.SetParent(Parent.transform);
               break;
-            case 10:
-              var empty = Instantiate(floor_empty, new Vector3(map[y].Length - x, map.Length - y, 0), Quaternion.identity);
+            case 9:
+              var empty = Instantiate(floor_empty, new Vector3(x, map.Length - y, 0), Quaternion.identity);
               empty.transform.SetParent(Parent.transform);
               break;
           }
         }
-      }
-      else
-      {
-        for (int x = 0; x < map[y].Length; x++)
+        else
         {
           switch (map[y][x])
           {
             case 0:
-              var block = Instantiate(floor_valid2, new Vector3(map[y].Length - x, map.Length - y, 0), Quaternion.identity);
+              var block = Instantiate(floor_valid2, new Vector3(x, map.Length - y, 0), Quaternion.identity);
               block.transform.SetParent(Parent.transform);
               break;
             case 1:
-              var obstacle = Instantiate(floor_obstacle2, new Vector3(map[y].Length - x, map.Length - y, 0), Quaternion.identity);
+              var obstacle = Instantiate(floor_obstacle2, new Vector3(x, map.Length - y, 0), Quaternion.identity);
               obstacle.transform.SetParent(Parent.transform);
               break;
             case 5:
-              var characterBlock = Instantiate(character2, new Vector3(map[y].Length - x, map.Length - y, 0), Quaternion.identity);
+              var characterBlock = Instantiate(character2, new Vector3(x, map.Length - y, 0), Quaternion.identity);
               characterBlock.transform.SetParent(Parent.transform);
-              //var valid = Instantiate(floor_valid, new Vector3(map[y].Length-x, map.Length-y, 0), Quaternion.identity);
+              //var valid = Instantiate(floor_valid, new Vector3(-x, map.Length-y, 0), Quaternion.identity);
               //valid.transform.SetParent(Parent.transform);
               break;
             case 6:
-              var exit = Instantiate(floor_exit2, new Vector3(map[y].Length - x, map.Length - y, 0), Quaternion.identity);
+              var exit = Instantiate(floor_exit2, new Vector3(x, map.Length - y, 0), Quaternion.identity);
               exit.transform.SetParent(Parent.transform);
+              break;
+            case 9:
+              var empty = Instantiate(floor_empty, new Vector3(x, map.Length - y, 0), Quaternion.identity);
+              empty.transform.SetParent(Parent.transform);
               break;
           }
         }
