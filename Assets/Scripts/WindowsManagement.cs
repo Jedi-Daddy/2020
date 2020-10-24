@@ -25,7 +25,7 @@ public class WindowsManagement : MonoBehaviour
     var introVideo = Intro.GetComponentInChildren<VideoPlayer>();
     //introVideo.Play();
     //introVideo.loopPointReached += ShowLoading1;
-    StartLev2(introVideo);
+    StartLev1(introVideo);
   }
 
   public void ShowLoading1(VideoPlayer vp)
@@ -93,6 +93,8 @@ public class WindowsManagement : MonoBehaviour
     switch (currentLevel)
     {
       case 1:
+        var map1 = Level1.GetComponentInChildren<Map1>();
+        map1.SetStartPosition();
         loadingVideo.loopPointReached += StartLev1;
         return;
       case 2:

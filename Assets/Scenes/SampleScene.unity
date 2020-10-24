@@ -2236,6 +2236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7c9fbef463c2f24aa1c209e875d3cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: "0\t0\t0\t1\t6\t0\t1\t2\t2\r\n0\t2\t0\t0\t0\t0\t0\t0\t2\r\n1\t2\t0\t2\t2\t2\t1\t1\t0\r\n0\t2\t0\t0\t0\t0\t0\t2\t0\r\n0\t0\t1\t2\t1\t1\t0\t2\t0\r\n0\t0\t0\t1\t2\t2\t0\t0\t0\r\n0\t0\t2\t0\t2\t2\t0\t2\t0\r\n2\t0\t2\t0\t0\t0\t0\t2\t0\r\n2\t0\t0\t0\t0\t0\t0\t0\t0\r\n2\t1\t2\t0\t5\t0\t2\t2\t0"
   character: {fileID: 6100484190659089111, guid: 268b340634f3a2844a4e52f03b6ef909,
     type: 3}
   floor_valid: {fileID: 374120334342398247, guid: c897328866d81474f826a0f023ff4429,

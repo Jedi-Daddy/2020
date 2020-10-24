@@ -28,6 +28,12 @@ public class Map1 : MonoBehaviour, IMap
     private int[][] _map;
 
     public static Map1 Instance;
+  public class StartPosition {
+    public int x;
+    public int y;
+  }
+  public StartPosition _startPosition;
+  private GameObject _characterBlock;
 
     public void Awake()
     {
@@ -52,6 +58,7 @@ public class Map1 : MonoBehaviour, IMap
                         empty.transform.SetParent(Parent.transform);
                         break;
                     case 5:
+            
                         var characterBackground = Instantiate(floor_valid, new Vector3(x, _map.Length - y, 0), Quaternion.identity);
                         characterBackground.transform.SetParent(Parent.transform);
 
@@ -61,10 +68,11 @@ public class Map1 : MonoBehaviour, IMap
                         if (rectTransform != null)
                             rectTransform.anchoredPosition = new Vector2(-_map[0].Length * 50f + 50f, _map.Length * 50f - 50f) +
                                                              new Vector2(x * 100f, -y * 100f);
-
+                        _startPosition = new StartPosition{ x = x, y = y};
                         var player = characterBlock.GetComponentInChildren<Player>();
                         player.SetPosition(x, y);
                         player.SetMap(this);
+                        _characterBlock = characterBlock;
                         break;
                     case 6:
                         var exit = Instantiate(floor_exit, new Vector3(x, _map.Length - y, 0), Quaternion.identity);
@@ -79,6 +87,18 @@ public class Map1 : MonoBehaviour, IMap
     {
         Swipe.FindPlayers();
     }
+
+  public void SetStartPosition()
+  {
+    var rectTransform = _characterBlock.GetComponent<RectTransform>();
+    if (rectTransform != null)
+      rectTransform.anchoredPosition = new Vector2(-_map[0].Length * 50f + 50f, _map.Length * 50f - 50f) +
+                                       new Vector2(_startPosition.x * 100f, -_startPosition.y * 100f);
+    _startPosition = new StartPosition { x = _startPosition.x, y = _startPosition.y };
+    var player = _characterBlock.GetComponentInChildren<Player>();
+    player.SetPosition(_startPosition.x, _startPosition.y);
+    player.SetMap(this);
+  }
 
     public int[][] ReadFromFile(string level)
     {
