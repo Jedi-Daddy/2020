@@ -7,20 +7,22 @@ public class Player : MonoBehaviour
     private const string Vertical = "VerticalDirection";
     private const string Horizonatal = "HorizontalDirection";
 
-    public int Speed = 10;
+    public int Speed = 15;
     public int MovementDistance = 100;
 
     private bool isBusy;
     private Animator _animator;
-    private Rigidbody2D _rigidbody;
+    private RectTransform _rectTransform;
 
     private int _verticalOrientation = 1;
     private int _horizontalOrientation = 1;
 
+    private Coroutine _coroutine;
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        _rigidbody = GetComponent<Rigidbody2D>();
+        _rectTransform = GetComponent<RectTransform>();
     }
 
     public void InverseOrientation(bool horizontalInversed, bool verticalInversed)
@@ -34,33 +36,44 @@ public class Player : MonoBehaviour
         if (isBusy)
             return;
 
-        StartCoroutine(MoveImpl(distance));
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+
+        _coroutine = StartCoroutine(MoveImpl(distance));
     }
 
     private IEnumerator MoveImpl(Vector2 distance)
     {
         isBusy = true;
-        var currentPosition = _rigidbody.position;
+        var currentPosition = _rectTransform.localPosition;
 
         var direction = Direction(distance);
-        var endPoint = currentPosition + direction * MovementDistance * new Vector2(_verticalOrientation, _horizontalOrientation);
+        var endPoint = currentPosition + Vector3.Scale(direction, new Vector3(_verticalOrientation, _horizontalOrientation, 0)) * MovementDistance;
+
+        if (!Map1.Instance.CanGo((int)direction.x * _verticalOrientation, (int)direction.y * _horizontalOrientation))
+        {
+            isBusy = false;
+            yield break;
+        }
 
         TriggerAnimation(direction);
 
         yield return new WaitForSeconds(0.3f);
 
-        while ((currentPosition - endPoint).magnitude > 1)
+        while ((currentPosition - endPoint).magnitude > 2)
         {
             currentPosition = Vector3.Lerp(currentPosition, endPoint, Time.deltaTime * Speed);
-            _rigidbody.MovePosition(currentPosition);
+            _rectTransform.localPosition = currentPosition;
 
             yield return null;
         }
 
+        _rectTransform.localPosition = endPoint;
+        _coroutine = null;
         isBusy = false;
     }
 
-    private Vector2 Direction(Vector2 distance)
+    private Vector3 Direction(Vector2 distance)
     {
         if (Math.Abs(distance.x) > Math.Abs(distance.y))
             return distance.x > 0 ? Vector3.right : Vector3.left;
