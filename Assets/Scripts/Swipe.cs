@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -12,17 +13,12 @@ public class Swipe : MonoBehaviour, IEndDragHandler, IDragHandler
     private Vector2 _currentPosition;
 
     private Player[] _players;
+    private void Start()
+    {
+        _players = FindObjectsOfType<Player>().Where(x => x.isActiveAndEnabled).ToArray();
+    }
 
-    //private void Awake()
-    //{
-    //    _players = FindObjectsOfType<Player>();
-    //}
-  public void Start()
-  {
-    _players = FindObjectsOfType<Player>();
-  }
-
-  public void OnEndDrag(PointerEventData eventData)
+    public void OnEndDrag(PointerEventData eventData)
     {
         Drag(eventData);
     }
@@ -49,8 +45,12 @@ public class Swipe : MonoBehaviour, IEndDragHandler, IDragHandler
             if (Math.Abs(_distance.x) < MinDistanceForSwipe && Math.Abs(_distance.y) < MinDistanceForSwipe)
                 return;
 
-            foreach(var player in _players)
+            Debug.Log("Move");
+            foreach (var player in _players)
+            {
+                Debug.LogError("Yeee");
                 player.Move(_distance);
+            }
 
             _distance = Vector2.zero;
         }
