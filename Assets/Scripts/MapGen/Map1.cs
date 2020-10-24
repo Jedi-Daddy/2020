@@ -83,11 +83,6 @@ public class Map1 : MonoBehaviour, IMap
         }
     }
 
-    private void OnEnable()
-    {
-        Swipe.FindPlayers();
-    }
-
   public void SetStartPosition()
   {
     var rectTransform = _characterBlock.GetComponent<RectTransform>();

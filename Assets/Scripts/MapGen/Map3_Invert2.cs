@@ -72,11 +72,6 @@ public class Map3_Invert2 : MonoBehaviour, IMap
         }
     }
 
-    private void OnEnable()
-    {
-        Swipe.FindPlayers();
-    }
-
     public int[][] ReadFromFile(string level)
     {
         level = level.Replace("\t", "").Replace(" ", "");

@@ -15,10 +15,6 @@ public class Swipe : MonoBehaviour, IEndDragHandler, IDragHandler
     private Player[] _players;
     private void Start()
     {
-    }
-
-    public void FindPlayers()
-    {
         _players = transform.parent.GetComponentsInChildren<Player>().Where(x => x.isActiveAndEnabled).ToArray();
     }
 
