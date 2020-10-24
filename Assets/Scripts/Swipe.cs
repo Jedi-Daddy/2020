@@ -47,14 +47,19 @@ public class Swipe : MonoBehaviour, IEndDragHandler, IDragHandler
         if (velocity < MinVelocityThreshold)
         {
             if (Math.Abs(_distance.x) < MinDistanceForSwipe && Math.Abs(_distance.y) < MinDistanceForSwipe)
-                return;
-
-            Debug.Log("Move");
-            foreach (var player in _players)
             {
-                Debug.LogError("Yeee");
-                player.Move(_distance);
+                _distance = Vector2.zero;
+                return;
             }
+
+            if (_players.Any(x => !x.CanGo(_distance)))
+            {
+                _distance = Vector2.zero;
+                return;
+            }
+
+            foreach (var player in _players)
+                player.Move(_distance);
 
             _distance = Vector2.zero;
         }

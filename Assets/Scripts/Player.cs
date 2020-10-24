@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    private class PlayerPosition
+    {
+        public int x;
+        public int y;
+    }
+
     private const string Vertical = "VerticalDirection";
     private const string Horizonatal = "HorizontalDirection";
 
@@ -17,6 +23,7 @@ public class Player : MonoBehaviour
     private int _verticalOrientation = 1;
     private int _horizontalOrientation = 1;
 
+    private PlayerPosition _playerPosition;
     private Coroutine _coroutine;
     public IMap _map;
 
@@ -24,6 +31,14 @@ public class Player : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _rectTransform = GetComponent<RectTransform>();
+    }
+
+    public bool CanGo(Vector2 distance)
+    {
+        var direction = Direction(distance);
+        var newMapPosX = _playerPosition.x + (int)direction.x * _verticalOrientation;
+        var newMapPosY = _playerPosition.y - (int)direction.y * _horizontalOrientation;
+        return _map.CanGo(newMapPosX, newMapPosY);
     }
 
     public void InverseOrientation(bool horizontalInversed, bool verticalInversed)
@@ -35,6 +50,11 @@ public class Player : MonoBehaviour
     public void SetMap(IMap map)
     {
         _map = map;
+    }
+
+    public void SetPosition(int x, int y)
+    {
+        _playerPosition = new PlayerPosition { x = x, y = y };
     }
 
     public void Move(Vector2 distance)
@@ -56,11 +76,10 @@ public class Player : MonoBehaviour
         var direction = Direction(distance);
         var endPoint = currentPosition + Vector3.Scale(direction, new Vector3(_verticalOrientation, _horizontalOrientation, 0)) * MovementDistance;
 
-        if (!_map.CanGo((int)direction.x * _verticalOrientation, (int)direction.y * _horizontalOrientation))
-        {
-            isBusy = false;
-            yield break;
-        }
+        yield return null;
+
+        _playerPosition.x = _playerPosition.x + (int)direction.x * _verticalOrientation;
+        _playerPosition.y = _playerPosition.y - (int)direction.y * _horizontalOrientation;
 
         TriggerAnimation(direction);
 
@@ -77,21 +96,26 @@ public class Player : MonoBehaviour
         _rectTransform.localPosition = endPoint;
         _coroutine = null;
         isBusy = false;
-    if(_map.IsFinish())
-      {
-      isBusy = false;
-      var windowsManager = FindObjectOfType<WindowsManagement>();
-      windowsManager.ToNextLevel();
-      yield break;
+
+
+        if (_map.IsFinish(_playerPosition.x, _playerPosition.y))
+        {
+            var windowsManager = FindObjectOfType<WindowsManagement>();
+            windowsManager.ToNextLevel();
+        }
+
+        yield return null;
+
+        if (_map.IsDead(_playerPosition.x, _playerPosition.y))
+        {
+            isBusy = false;
+            var windowsManager = FindObjectOfType<WindowsManagement>();
+            windowsManager.ShowEnd();
+            yield break;
+        }
+
+        yield return null;
     }
-    if (_map.IsDead())
-    {
-      isBusy = false;
-      var windowsManager = FindObjectOfType<WindowsManagement>();
-      windowsManager.ShowEnd();
-      yield break;
-    }
-  }
 
     private Vector3 Direction(Vector2 distance)
     {
