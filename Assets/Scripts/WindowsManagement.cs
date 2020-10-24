@@ -19,10 +19,13 @@ public class WindowsManagement : MonoBehaviour
     Level4.active = false;
     var introVideo = Intro.GetComponentInChildren<VideoPlayer>();
     introVideo.Play();
+    introVideo.loopPointReached += StartLev1;
   }
 
-  public void StartLev1()
+  public void StartLev1(VideoPlayer vp)
   {
+    vp.Stop();
+    Intro.active = false;
     Level1.active = true;
     Level2.active = false;
     Level3.active = false;
