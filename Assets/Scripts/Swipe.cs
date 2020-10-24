@@ -13,12 +13,16 @@ public class Swipe : MonoBehaviour, IEndDragHandler, IDragHandler
 
     private Player[] _players;
 
-    private void Awake()
-    {
-        _players = FindObjectsOfType<Player>();
-    }
+    //private void Awake()
+    //{
+    //    _players = FindObjectsOfType<Player>();
+    //}
+  public void Start()
+  {
+    _players = FindObjectsOfType<Player>();
+  }
 
-    public void OnEndDrag(PointerEventData eventData)
+  public void OnEndDrag(PointerEventData eventData)
     {
         Drag(eventData);
     }

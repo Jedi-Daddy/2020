@@ -7,13 +7,17 @@ public class InverseController : MonoBehaviour
 
     private Player _player;
 
-    private void Awake()
-    {
-        _player = GetComponentInChildren<Player>();
-        InversePlayerController();
-    }
-
-    private void InversePlayerController()
+  //private void Awake()
+  //{
+  //    _player = GetComponentInChildren<Player>();
+  //    InversePlayerController();
+  //}
+  public void Start()
+  {
+    _player = GetComponentInChildren<Player>();
+    InversePlayerController();
+  }
+  private void InversePlayerController()
     {
         _player.InverseOrientation(HorizontalInversed, VerticalInversed);
     }    
