@@ -10,6 +10,7 @@ public class WindowsManagement : MonoBehaviour
   public GameObject Level3;
   public GameObject Level4;
   public GameObject Intro;
+  public GameObject Loading;
 
   void Start()
     {
@@ -17,9 +18,24 @@ public class WindowsManagement : MonoBehaviour
     Level2.active = false;
     Level3.active = false;
     Level4.active = false;
+    Loading.active = false;
     var introVideo = Intro.GetComponentInChildren<VideoPlayer>();
     introVideo.Play();
-    introVideo.loopPointReached += StartLev1;
+    introVideo.loopPointReached += ShowLoading1;
+  }
+
+  public void ShowLoading1(VideoPlayer vp)
+  {
+    vp.Stop();
+    Intro.active = false;
+    Level1.active = false;
+    Level2.active = false;
+    Level3.active = false;
+    Level4.active = false;
+    Loading.active = true;
+    var loadingVideo = Loading.GetComponentInChildren<VideoPlayer>();
+    loadingVideo.Play();
+    loadingVideo.loopPointReached += StartLev1;
   }
 
   public void StartLev1(VideoPlayer vp)
@@ -30,6 +46,7 @@ public class WindowsManagement : MonoBehaviour
     Level2.active = false;
     Level3.active = false;
     Level4.active = false;
+    Loading.active = false;
   }
 
   public void StartLev2()
