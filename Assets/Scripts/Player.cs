@@ -138,7 +138,8 @@ public class Player : MonoBehaviour
 
     public void Restart()
     {
-        var windowsManager = FindObjectOfType<WindowsManagement>();
-        windowsManager.ShowEnd();
+        PreloaderAnimator.Instance.Play("Game_Over");
+        //var windowsManager = FindObjectOfType<WindowsManagement>();
+        //windowsManager.ShowEnd();
     }
 }
