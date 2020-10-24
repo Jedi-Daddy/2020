@@ -8,8 +8,13 @@ using UnityEngine;
 
 namespace Assets.Scripts.Colliders
 {
-  //public class ExitCollider : BoxCollider2D
-  //{
-    
-  //}
+  public class ExitCollider : MonoBehaviour
+  {
+    public Camera mainCamera;
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+      var windowsManager = mainCamera.GetComponent<WindowsManagement>();
+      windowsManager.ShowLoading2();
+    }
+  }
 }
