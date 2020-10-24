@@ -34,10 +34,12 @@ public class Map1 : MonoBehaviour
             case 0:
               var block = Instantiate(floor_valid, new Vector3(map[y].Length - x, map.Length - y, 0), Quaternion.identity);
               block.transform.SetParent(Parent.transform);
+           
               break;
             case 1:
               var obstacle = Instantiate(floor_obstacle, new Vector3(map[y].Length - x, map.Length - y, 0), Quaternion.identity);
               obstacle.transform.SetParent(Parent.transform);
+              obstacle.AddComponent<BoxCollider2D>();
               break;
             case 5:
               var characterBlock = Instantiate(character, new Vector3(map[y].Length - x, map.Length - y, 0), Quaternion.identity);

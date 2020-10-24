@@ -42,8 +42,8 @@ public class WindowsManagement : MonoBehaviour
   {
     vp.Stop();
     Intro.active = false;
-    Level1.active = true;
-    Level2.active = false;
+    Level1.active = false;
+    Level2.active = true;
     Level3.active = false;
     Level4.active = false;
     Loading.active = false;
