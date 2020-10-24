@@ -4,7 +4,6 @@ using UnityEngine.EventSystems;
 
 public class Swipe : MonoBehaviour, IEndDragHandler, IDragHandler
 {
-    public Player Player;
     public float MinVelocityThreshold = 30f;
     public float MinDistanceForSwipe = 80f;
 

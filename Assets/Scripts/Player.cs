@@ -53,6 +53,7 @@ public class Player : MonoBehaviour
         {
             currentPosition = Vector3.Lerp(currentPosition, endPoint, Time.deltaTime * Speed);
             _rigidbody.MovePosition(currentPosition);
+
             yield return null;
         }
 
