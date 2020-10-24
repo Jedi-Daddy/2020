@@ -25,7 +25,7 @@ public class WindowsManagement : MonoBehaviour
     var introVideo = Intro.GetComponentInChildren<VideoPlayer>();
     //introVideo.Play();
     //introVideo.loopPointReached += ShowLoading1;
-    StartLev1(introVideo);
+    StartLev2(introVideo);
   }
 
   public void ShowLoading1(VideoPlayer vp)
