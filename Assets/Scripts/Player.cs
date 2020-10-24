@@ -107,12 +107,7 @@ public class Player : MonoBehaviour
         yield return null;
 
         if (_map.IsDead(_playerPosition.x, _playerPosition.y))
-        {
-            isBusy = false;
-            var windowsManager = FindObjectOfType<WindowsManagement>();
-            windowsManager.ShowEnd();
-            yield break;
-        }
+            _animator.SetTrigger("Dead");
 
         yield return null;
     }
@@ -136,5 +131,11 @@ public class Player : MonoBehaviour
             _animator.SetFloat(Horizonatal, direction.x * _verticalOrientation);
         else
             _animator.SetFloat(Vertical, direction.y * _horizontalOrientation);
+    }
+
+    public void Restart()
+    {
+        var windowsManager = FindObjectOfType<WindowsManagement>();
+        windowsManager.ShowEnd();
     }
 }
