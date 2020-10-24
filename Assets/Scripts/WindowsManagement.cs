@@ -13,14 +13,18 @@ public class WindowsManagement : MonoBehaviour
   public GameObject Intro;
   public GameObject Loading;
 
-  public GameObject Menu;
+  public GameObject MenuRestart;
+  public GameObject MenuNext;
 
   private int currentLevel = 0;
 
   void Start()
     {
-    Menu.GetComponentInChildren<ButtonScript>().ActionDelegate += ShowRestart;
-    Menu.GetComponentInChildren<ButtonScriptExit>().ActionDelegate += ExitGame;
+    MenuRestart.GetComponentInChildren<ButtonScript>().ActionDelegate += ShowRestart;
+    MenuRestart.GetComponentInChildren<ButtonScriptExit>().ActionDelegate += ExitGame;
+    MenuNext.GetComponentInChildren<ButtonScript>().ActionDelegate += ShowRestart;
+    MenuNext.GetComponentInChildren<ButtonScriptExit>().ActionDelegate += ExitGame;
+    MenuNext.GetComponentInChildren<ButtonScriptNext>().ActionDelegate += NextLevel;
 
     //Intro.active = true;
     //Level1.active = false;
@@ -28,7 +32,8 @@ public class WindowsManagement : MonoBehaviour
     //Level3.active = false;
     //Level4.active = false;
     //Loading.active = false;
-    //Menu.active = false;
+    //MenuRestart.active = false;
+    //MenuNext.active = false;
     var introVideo = Intro.GetComponentInChildren<VideoPlayer>();
     //introVideo.Play();
     //introVideo.loopPointReached += ShowLoading1;
@@ -49,44 +54,44 @@ public class WindowsManagement : MonoBehaviour
     loadingVideo.loopPointReached += StartLev1;
   }
 
-  public void ShowLoading2()
-  {
-    Intro.active = false;
-    Level1.active = false;
-    Level2.active = false;
-    Level3.active = false;
-    Level4.active = false;
-    Loading.active = true;
-    var loadingVideo = Loading.GetComponentInChildren<VideoPlayer>();
-    loadingVideo.Play();
-    loadingVideo.loopPointReached += StartLev2;
-  }
+  //public void ShowLoading2()
+  //{
+  //  Intro.active = false;
+  //  Level1.active = false;
+  //  Level2.active = false;
+  //  Level3.active = false;
+  //  Level4.active = false;
+  //  Loading.active = true;
+  //  var loadingVideo = Loading.GetComponentInChildren<VideoPlayer>();
+  //  loadingVideo.Play();
+  //  loadingVideo.loopPointReached += StartLev2;
+  //}
 
-  public void ShowLoading3()
-  {
-    Intro.active = false;
-    Level1.active = false;
-    Level2.active = false;
-    Level3.active = false;
-    Level4.active = false;
-    Loading.active = true;
-    var loadingVideo = Loading.GetComponentInChildren<VideoPlayer>();
-    loadingVideo.Play();
-    loadingVideo.loopPointReached += StartLev3;
-  }
+  //public void ShowLoading3()
+  //{
+  //  Intro.active = false;
+  //  Level1.active = false;
+  //  Level2.active = false;
+  //  Level3.active = false;
+  //  Level4.active = false;
+  //  Loading.active = true;
+  //  var loadingVideo = Loading.GetComponentInChildren<VideoPlayer>();
+  //  loadingVideo.Play();
+  //  loadingVideo.loopPointReached += StartLev3;
+  //}
 
-  public void ShowLoading4()
-  {
-    Intro.active = false;
-    Level1.active = false;
-    Level2.active = false;
-    Level3.active = false;
-    Level4.active = false;
-    Loading.active = true;
-    var loadingVideo = Loading.GetComponentInChildren<VideoPlayer>();
-    loadingVideo.Play();
-    loadingVideo.loopPointReached += StartLev4;
-  }
+  //public void ShowLoading4()
+  //{
+  //  Intro.active = false;
+  //  Level1.active = false;
+  //  Level2.active = false;
+  //  Level3.active = false;
+  //  Level4.active = false;
+  //  Loading.active = true;
+  //  var loadingVideo = Loading.GetComponentInChildren<VideoPlayer>();
+  //  loadingVideo.Play();
+  //  loadingVideo.loopPointReached += StartLev4;
+  //}
 
   public void ShowEnd()
   {
@@ -94,39 +99,58 @@ public class WindowsManagement : MonoBehaviour
     Level2.active = false;
     Level3.active = false;
     Level4.active = false;
-    Menu.active = true;
+    MenuRestart.active = true;
   }
   public void ShowRestart()
   {
-    Menu.active = false;
-    var loadingVideo = Loading.GetComponentInChildren<VideoPlayer>();
+    MenuRestart.active = false;
+    MenuNext.active = false;
     switch (currentLevel)
     {
       case 1:
         var map1 = Level1.GetComponentInChildren<Map1>();
         map1.SetStartPosition();
-        StartLev1(loadingVideo);
+        StartLev1();
         return;
       case 2:
         var map21 = Level2.GetComponentInChildren<Map2>();
         map21.SetStartPosition();
         var map22 = Level2.GetComponentInChildren<Map2_Invert>();
         map22.SetStartPosition();
-        StartLev2(loadingVideo);
+        StartLev2();
         return;
       case 3:
         var map31 = Level3.GetComponentInChildren<Map3>();
         map31.SetStartPosition();
         var map32 = Level3.GetComponentInChildren<Map3_Invert2>();
         map32.SetStartPosition();
-        StartLev3(loadingVideo);
+        StartLev3();
         return;
       case 4:
         var map41 = Level4.GetComponentInChildren<Map4>();
         map41.SetStartPosition();
         var map42 = Level4.GetComponentInChildren<Map4_Invert>();
         map42.SetStartPosition();
-        StartLev4(loadingVideo);
+        StartLev4();
+        return;
+    }
+  }
+
+  public void NextLevel()
+  {
+    switch (currentLevel)
+    {
+      case 1:
+        StartLev2();
+        return;
+      case 2:
+        StartLev3();
+        return;
+      case 3:
+        StartLev4();
+        return;
+      case 4:
+        ShowEnd();
         return;
     }
   }
@@ -139,6 +163,20 @@ public class WindowsManagement : MonoBehaviour
   public void StartLev1(VideoPlayer vp)
   {
     vp.Stop();
+    MenuRestart.active = false;
+    MenuNext.active = false;
+    Intro.active = false;
+    Level1.active = true;
+    Level2.active = false;
+    Level3.active = false;
+    Level4.active = false;
+    Loading.active = false;
+    currentLevel = 1;
+  }
+  public void StartLev1()
+  {
+    MenuRestart.active = false;
+    MenuNext.active = false;
     Intro.active = false;
     Level1.active = true;
     Level2.active = false;
@@ -148,9 +186,10 @@ public class WindowsManagement : MonoBehaviour
     currentLevel = 1;
   }
 
-  public void StartLev2(VideoPlayer vp)
+  public void StartLev2()
   {
-    vp.Stop();
+    MenuRestart.active = false;
+    MenuNext.active = false;
     Intro.active = false;
     Level1.active = false;
     Level2.active = true;
@@ -160,9 +199,10 @@ public class WindowsManagement : MonoBehaviour
     currentLevel = 2;
   }
 
-  public void StartLev3(VideoPlayer vp)
+  public void StartLev3()
   {
-    vp.Stop();
+    MenuRestart.active = false;
+    MenuNext.active = false;
     Intro.active = false;
     Level1.active = false;
     Level2.active = false;
@@ -172,9 +212,10 @@ public class WindowsManagement : MonoBehaviour
     currentLevel = 3;
   }
 
-  public void StartLev4(VideoPlayer vp)
+  public void StartLev4()
   {
-    vp.Stop();
+    MenuRestart.active = false;
+    MenuNext.active = false;
     Intro.active = false;
     Level1.active = false;
     Level2.active = false;
@@ -198,26 +239,12 @@ public class WindowsManagement : MonoBehaviour
 
   public void ToNextLevel()
   {
-    switch (currentLevel)
-    {
-      case 1:
-        ShowLoading2();
-        return;
-      case 2:
-        ShowLoading3();
-        return;
-      case 3:
-        ShowLoading4();
-        return;
-      case 4:
-        ShowEnd();
-        return;
-    }
+    Level1.active = false;
+    Level2.active = false;
+    Level3.active = false;
+    Level4.active = false;
+    MenuNext.active = true;
   }
-
-  
-
-
   // Update is called once per frame
   void Update()
     {
