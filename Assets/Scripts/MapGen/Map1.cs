@@ -45,17 +45,15 @@ public class Map1 : MonoBehaviour
             empty.transform.SetParent(Parent.transform);
             break;
           case 5:
-              var characterBackground = Instantiate(floor_valid, new Vector3(x, map.Length-y, 0), Quaternion.identity);
-              characterBackground.transform.SetParent(Parent.transform);
-              
-              var characterBlock = Instantiate(character, Vector3.zero, Quaternion.identity);
-              characterBlock.transform.SetParent(Parent.transform.parent);
-              var parentRectTransform = Parent.GetComponent<RectTransform>();
-              var rectTransform = characterBlock.GetComponent<RectTransform>();
-              if (rectTransform != null && parentRectTransform != null)
-              {
-                rectTransform.anchoredPosition = new Vector2(-400f, 450f) + new Vector2 (x * 100, -y * 100);
-              }
+            var characterBackground = Instantiate(floor_valid, new Vector3(x, map.Length - y, 0), Quaternion.identity);
+            characterBackground.transform.SetParent(Parent.transform);
+
+            var characterBlock = Instantiate(character, Vector3.zero, Quaternion.identity);
+            characterBlock.transform.SetParent(Parent.transform.parent);
+            var rectTransform = characterBlock.GetComponent<RectTransform>();
+            if (rectTransform != null)
+              rectTransform.anchoredPosition = new Vector2(-map[0].Length * 50f + 50f, map.Length * 50f - 50f) +
+                                               new Vector2(x * 100f, -y * 100f);
             break;
           case 6:
             var exit = Instantiate(floor_exit, new Vector3(x, map.Length - y, 0), Quaternion.identity);
