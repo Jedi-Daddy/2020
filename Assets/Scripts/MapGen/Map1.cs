@@ -68,11 +68,11 @@ public class Map1 : MonoBehaviour, IMap
                         if (rectTransform != null)
                             rectTransform.anchoredPosition = new Vector2(-_map[0].Length * 50f + 50f, _map.Length * 50f - 50f) +
                                                              new Vector2(x * 100f, -y * 100f);
-                        _startPosition = new StartPosition{ x = x, y = y};
                         var player = characterBlock.GetComponentInChildren<Player>();
                         player.SetPosition(x, y);
                         player.SetMap(this);
                         _characterBlock = characterBlock;
+                        _startPosition = new StartPosition { x = x, y = y };
                         break;
                     case 6:
                         var exit = Instantiate(floor_exit, new Vector3(x, _map.Length - y, 0), Quaternion.identity);

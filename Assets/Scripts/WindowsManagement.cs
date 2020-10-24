@@ -98,12 +98,24 @@ public class WindowsManagement : MonoBehaviour
         loadingVideo.loopPointReached += StartLev1;
         return;
       case 2:
+        var map21 = Level2.GetComponentInChildren<Map2>();
+        map21.SetStartPosition();
+        var map22 = Level2.GetComponentInChildren<Map2_Invert>();
+        map22.SetStartPosition();
         loadingVideo.loopPointReached += StartLev2;
         return;
       case 3:
+        var map31 = Level3.GetComponentInChildren<Map3>();
+        map31.SetStartPosition();
+        var map32 = Level3.GetComponentInChildren<Map3_Invert2>();
+        map32.SetStartPosition();
         loadingVideo.loopPointReached += StartLev3;
         return;
       case 4:
+        var map41 = Level4.GetComponentInChildren<Map4>();
+        map41.SetStartPosition();
+        var map42 = Level4.GetComponentInChildren<Map4_Invert>();
+        map42.SetStartPosition();
         loadingVideo.loopPointReached += StartLev4;
         return;
     }
