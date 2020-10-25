@@ -26,9 +26,6 @@ public class SoundSystem : MonoBehaviour
 
     public void Play(string name)
     {
-        Source.Stop();
-        Source.clip = null;
-
         var clip = Sounds.FirstOrDefault(x => x.Name.Equals(name));
         if (clip == null)
         {
@@ -42,8 +39,6 @@ public class SoundSystem : MonoBehaviour
 
     public void PlayOneShot(string name)
     {
-        Source.Stop();
-
         var clip = Sounds.FirstOrDefault(x => x.Name.Equals(name));
         if (clip == null)
         {
@@ -52,5 +47,11 @@ public class SoundSystem : MonoBehaviour
         }
 
         Source.PlayOneShot(clip.Clip);
+    }
+
+    public void Stop()
+    {
+        Source.Stop();
+        Source.clip = null;
     }
 }

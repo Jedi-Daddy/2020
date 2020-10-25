@@ -34,6 +34,12 @@ public class ButtonsController : MonoBehaviour
             foreach (var player in _players)
                 player.Move(distance);
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SoundSystem.Instance.Stop();
+            PreloaderAnimator.Instance.Play("Game_Over");
+        }
     }
 #endif
 }

@@ -109,6 +109,7 @@ public class Player : MonoBehaviour
         if (_map.IsDead(_playerPosition.x, _playerPosition.y))
         {
             _animator.SetTrigger("Dead");
+            SoundSystem.Instance.Stop();
             SoundSystem.Instance.PlayOneShot("Game Over");
         }
 
