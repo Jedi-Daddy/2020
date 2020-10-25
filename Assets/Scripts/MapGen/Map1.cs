@@ -90,11 +90,10 @@ public class Map1 : MonoBehaviour, IMap
 
   public void SetStartPosition()
   {
-    var rectTransform = _characterBlock.GetComponent<RectTransform>();
+    var rectTransform = _characterBlock.transform.GetChild(0).GetComponent<RectTransform>();
     if (rectTransform != null)
-      rectTransform.anchoredPosition = new Vector2(-_map[0].Length * 50f + 50f, _map.Length * 50f - 50f) +
-                                       new Vector2(_startPosition.x * 100f, -_startPosition.y * 100f);
-    _startPosition = new StartPosition { x = _startPosition.x, y = _startPosition.y };
+      rectTransform.anchoredPosition = new Vector2(0, 45);
+
     var player = _characterBlock.GetComponentInChildren<Player>();
     player.SetPosition(_startPosition.x, _startPosition.y);
     player.SetMap(this);
