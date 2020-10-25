@@ -76,7 +76,10 @@ public class WindowsManagement : MonoBehaviour
     MenuNext.active = false;
     BeforeLevel2.active = true;
     var loadingVideo = BeforeLevel2.GetComponentInChildren<VideoPlayer>();
-    loadingVideo.Play();
+        var texture = new RenderTexture(1920, 1080, 1);
+        loadingVideo.targetTexture = texture;
+        loadingVideo.transform.parent.GetComponentInChildren<RawImage>().texture = texture;
+        loadingVideo.Play();
     loadingVideo.loopPointReached += StartLev2;
   }
   public void ShowIntroLevel3()
@@ -84,7 +87,10 @@ public class WindowsManagement : MonoBehaviour
     MenuNext.active = false;
     BeforeLevel3.active = true;
     var loadingVideo = BeforeLevel3.GetComponentInChildren<VideoPlayer>();
-    loadingVideo.Play();
+        var texture = new RenderTexture(1920, 1080, 1);
+        loadingVideo.targetTexture = texture;
+        loadingVideo.transform.parent.GetComponentInChildren<RawImage>().texture = texture;
+        loadingVideo.Play();
     loadingVideo.loopPointReached += StartLev3;
   }
   public void ShowIntroLevel4()
@@ -92,7 +98,10 @@ public class WindowsManagement : MonoBehaviour
     MenuNext.active = false;
     BeforeLevel4.active = true;
     var loadingVideo = BeforeLevel4.GetComponentInChildren<VideoPlayer>();
-    loadingVideo.Play();
+        var texture = new RenderTexture(1920, 1080, 1);
+        loadingVideo.targetTexture = texture;
+        loadingVideo.transform.parent.GetComponentInChildren<RawImage>().texture = texture;
+        loadingVideo.Play();
     loadingVideo.loopPointReached += StartLev4;
   }
   
