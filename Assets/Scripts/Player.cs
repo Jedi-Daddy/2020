@@ -54,6 +54,7 @@ public class Player : MonoBehaviour
 
     public void SetPosition(int x, int y)
     {
+        isBusy = false;
         _playerPosition = new PlayerPosition { x = x, y = y };
     }
 
