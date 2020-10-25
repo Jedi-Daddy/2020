@@ -101,8 +101,7 @@ public class Player : MonoBehaviour
 
         if (_map.IsFinish(_playerPosition.x, _playerPosition.y))
         {
-            var windowsManager = FindObjectOfType<WindowsManagement>();
-            windowsManager.ToNextLevel();
+            PreloaderAnimator.Instance.Play("Game_Over", true);
         }
 
         yield return null;
@@ -140,6 +139,6 @@ public class Player : MonoBehaviour
 
     public void Restart()
     {
-        PreloaderAnimator.Instance.Play("Game_Over");
+        PreloaderAnimator.Instance.Play("Game_Over", false);
     }
 }

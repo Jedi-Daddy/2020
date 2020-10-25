@@ -16,9 +16,24 @@ public class PreloaderAnimator : MonoBehaviour
         _animator.SetTrigger(name);
     }
 
+    private bool _isVictory;
+    public void Play(string name, bool isVictory)
+    {
+        _isVictory = isVictory;
+        _animator.SetTrigger(name);
+    }
+
     public void Restart()
     {
-        var windowsManager = FindObjectOfType<WindowsManagement>();
-        windowsManager.ShowEnd();
+        if (_isVictory)
+        {
+            var windowsManager = FindObjectOfType<WindowsManagement>();
+            windowsManager.ToNextLevel();
+        }
+        else
+        {
+            var windowsManager = FindObjectOfType<WindowsManagement>();
+            windowsManager.ShowEnd();
+        }
     }
 }

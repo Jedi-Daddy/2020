@@ -268,7 +268,6 @@ public class WindowsManagement : MonoBehaviour
     currentLevel = 3;
 
     SoundSystem.Instance.Play("Main Theme");
-    PreloaderAnimator.Instance.Play("Start_Level");
   }
 
   //public void StartLev4()
@@ -301,7 +300,6 @@ public class WindowsManagement : MonoBehaviour
     currentLevel = 4;
 
     SoundSystem.Instance.Play("Main Theme");
-    PreloaderAnimator.Instance.Play("Start_Level");
   }
 
   public void ToNextLevel()
