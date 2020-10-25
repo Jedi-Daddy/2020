@@ -26,6 +26,24 @@ public class SoundSystem : MonoBehaviour
 
     public void Play(string name)
     {
+        Source.Stop();
+        Source.clip = null;
+
+        var clip = Sounds.FirstOrDefault(x => x.Name.Equals(name));
+        if (clip == null)
+        {
+            Debug.LogError("Sound clip with name " + name + "not found");
+            return;
+        }
+
+        Source.clip = clip.Clip;
+        Source.Play();
+    }
+
+    public void PlayOneShot(string name)
+    {
+        Source.Stop();
+
         var clip = Sounds.FirstOrDefault(x => x.Name.Equals(name));
         if (clip == null)
         {

@@ -109,7 +109,7 @@ public class Player : MonoBehaviour
         if (_map.IsDead(_playerPosition.x, _playerPosition.y))
         {
             _animator.SetTrigger("Dead");
-            SoundSystem.Instance.Play("Game Over");
+            SoundSystem.Instance.PlayOneShot("Game Over");
         }
 
         yield return null;
@@ -139,7 +139,5 @@ public class Player : MonoBehaviour
     public void Restart()
     {
         PreloaderAnimator.Instance.Play("Game_Over");
-        //var windowsManager = FindObjectOfType<WindowsManagement>();
-        //windowsManager.ShowEnd();
     }
 }

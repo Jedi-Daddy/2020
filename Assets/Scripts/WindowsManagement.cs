@@ -172,7 +172,10 @@ public class WindowsManagement : MonoBehaviour
     Level4.active = false;
     Loading.active = false;
     currentLevel = 1;
-  }
+
+        SoundSystem.Instance.Play("Main Theme");
+        PreloaderAnimator.Instance.Play("Start_Level");
+    }
   public void StartLev1()
   {
     MenuRestart.active = false;
@@ -184,7 +187,10 @@ public class WindowsManagement : MonoBehaviour
     Level4.active = false;
     Loading.active = false;
     currentLevel = 1;
-  }
+
+        SoundSystem.Instance.Play("Main Theme");
+        PreloaderAnimator.Instance.Play("Start_Level");
+    }
 
   public void StartLev2()
   {
@@ -197,7 +203,10 @@ public class WindowsManagement : MonoBehaviour
     Level4.active = false;
     Loading.active = false;
     currentLevel = 2;
-  }
+
+        SoundSystem.Instance.Play("Main Theme");
+        PreloaderAnimator.Instance.Play("Start_Level");
+    }
 
   public void StartLev3()
   {
@@ -210,7 +219,10 @@ public class WindowsManagement : MonoBehaviour
     Level4.active = false;
     Loading.active = false;
     currentLevel = 3;
-  }
+
+        SoundSystem.Instance.Play("Main Theme");
+        PreloaderAnimator.Instance.Play("Start_Level");
+    }
 
   public void StartLev4()
   {
@@ -223,7 +235,10 @@ public class WindowsManagement : MonoBehaviour
     Level4.active = true;
     Loading.active = false;
     currentLevel = 4;
-  }
+
+        SoundSystem.Instance.Play("Main Theme");
+        PreloaderAnimator.Instance.Play("Start_Level");
+    }
   public void GameEnd()
   {
     Intro.active = true;
