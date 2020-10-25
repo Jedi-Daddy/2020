@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Video;
 using Assets.Scripts;
+using UnityEngine.UI;
 
 public class WindowsManagement : MonoBehaviour
 {
@@ -19,7 +20,6 @@ public class WindowsManagement : MonoBehaviour
   public GameObject EndLevel1;
   public GameObject EndLevel2;
   public GameObject EndLevel3;
-
 
   public GameObject BeforeLevel2;
   public GameObject BeforeLevel3;
@@ -64,6 +64,10 @@ public class WindowsManagement : MonoBehaviour
     Level4.active = false;
     Loading.active = true;
     var loadingVideo = Loading.GetComponentInChildren<VideoPlayer>();
+    var texture = new RenderTexture(1920, 1080, 1);
+    loadingVideo.targetTexture = texture;
+    loadingVideo.transform.parent.GetComponentInChildren<RawImage>().texture = texture;
+
     loadingVideo.Play();
     loadingVideo.loopPointReached += StartLev1;
   }
@@ -315,7 +319,10 @@ public class WindowsManagement : MonoBehaviour
     Level4.active = false;
     GameEndWin.active = true;
     var video = GameEndWin.GetComponentInChildren<VideoPlayer>();
-    video.Play();
+        var texture = new RenderTexture(1920, 1080, 1);
+        video.targetTexture = texture;
+        video.transform.parent.GetComponentInChildren<RawImage>().texture = texture;
+        video.Play();
   }
 
   public void Level1Complete()
@@ -323,7 +330,12 @@ public class WindowsManagement : MonoBehaviour
     Level1.active = false;
     EndLevel1.active = true;
     var video = EndLevel1.GetComponentInChildren<VideoPlayer>();
-    video.Play();
+
+        var texture = new RenderTexture(1920, 1080, 1);
+        video.targetTexture = texture;
+        video.transform.parent.GetComponentInChildren<RawImage>().texture = texture;
+
+        video.Play();
     video.loopPointReached += ShowMenu;
   }
 
@@ -341,7 +353,11 @@ public class WindowsManagement : MonoBehaviour
     Level2.active = false;
     EndLevel2.active = true;
     var video = EndLevel2.GetComponentInChildren<VideoPlayer>();
-    video.Play();
+
+        var texture = new RenderTexture(1920, 1080, 1);
+        video.targetTexture = texture;
+        video.transform.parent.GetComponentInChildren<RawImage>().texture = texture;
+        video.Play();
     video.loopPointReached += ShowMenu;
   }
   public void Level3Complete()
@@ -349,7 +365,10 @@ public class WindowsManagement : MonoBehaviour
     Level3.active = false;
     EndLevel3.active = true;
     var video = EndLevel3.GetComponentInChildren<VideoPlayer>();
-    video.Play();
+        var texture = new RenderTexture(1920, 1080, 1);
+        video.targetTexture = texture;
+        video.transform.parent.GetComponentInChildren<RawImage>().texture = texture;
+        video.Play();
     video.loopPointReached += ShowMenu;
   }
 }
