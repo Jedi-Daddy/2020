@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class ButtonsController : MonoBehaviour
 {
-#if !UNITY_ANDROID || UNITY_EDITOR
     private Player[] _players;
 
     void Start()
@@ -13,6 +12,7 @@ public class ButtonsController : MonoBehaviour
 
     void Update()
     {
+#if !UNITY_ANDROID || UNITY_EDITOR
         var horizontal = Input.GetAxis("Horizontal");
         if (horizontal != 0)
         {
@@ -35,11 +35,11 @@ public class ButtonsController : MonoBehaviour
                 player.Move(distance);
         }
 
+#endif
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             SoundSystem.Instance.Stop();
             PreloaderAnimator.Instance.Play("Game_Over");
         }
     }
-#endif
 }
