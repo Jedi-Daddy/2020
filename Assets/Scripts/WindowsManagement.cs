@@ -34,22 +34,22 @@ public class WindowsManagement : MonoBehaviour
     MenuNext.GetComponentInChildren<ButtonScriptExit>().ActionDelegate += ExitGame;
     MenuNext.GetComponentInChildren<ButtonScriptNext>().ActionDelegate += NextLevel;
 
-    //Intro.active = true;
-    //Level1.active = false;
-    //Level2.active = false;
-    //Level3.active = false;
-    //Level4.active = false;
-    //Loading.active = false;
-    //MenuRestart.active = false;
-    //MenuNext.active = false;
-    //GameEndWin.active = false;
-    //EndLevel1.active = false;
-    //EndLevel2.active = false;
-    //EndLevel3.active = false;
+    Intro.active = true;
+    Level1.active = false;
+    Level2.active = false;
+    Level3.active = false;
+    Level4.active = false;
+    Loading.active = false;
+    MenuRestart.active = false;
+    MenuNext.active = false;
+    GameEndWin.active = false;
+    EndLevel1.active = false;
+    EndLevel2.active = false;
+    EndLevel3.active = false;
     var introVideo = Intro.GetComponentInChildren<VideoPlayer>();
-    //introVideo.Play();
-    //introVideo.loopPointReached += ShowLoading1;
-    StartLev3();
+    introVideo.Play();
+    introVideo.loopPointReached += ShowLoading1;
+    //StartLev3();
   }
 
   public void ShowLoading1(VideoPlayer vp)
