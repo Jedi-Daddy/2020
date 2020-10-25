@@ -3247,7 +3247,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: 2696815cfe12b1446b0d5edd6d544cc0, type: 2}
+  m_Texture: {fileID: 8400000, guid: fe4d1a58cb534384aa88c671eb772f0f, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -4213,7 +4213,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: 2696815cfe12b1446b0d5edd6d544cc0, type: 2}
+  m_Texture: {fileID: 8400000, guid: a9cf8a082ea2cf94ba73c0f4775ed4d7, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -4991,11 +4991,11 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1505186281}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 51a6c72e45187c44799451114fb4a598, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 0250481813f7dfb4d9f0b6559effdee5, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 519420031}
-  m_TargetTexture: {fileID: 8400000, guid: 2696815cfe12b1446b0d5edd6d544cc0, type: 2}
+  m_TargetTexture: {fileID: 8400000, guid: fe4d1a58cb534384aa88c671eb772f0f, type: 2}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: _MainTex
@@ -5933,11 +5933,11 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1821384106}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 51a6c72e45187c44799451114fb4a598, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: d6638430ea9a04b4a96ad5c2c99aa910, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 519420031}
-  m_TargetTexture: {fileID: 8400000, guid: 2696815cfe12b1446b0d5edd6d544cc0, type: 2}
+  m_TargetTexture: {fileID: 8400000, guid: a9cf8a082ea2cf94ba73c0f4775ed4d7, type: 2}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: _MainTex
