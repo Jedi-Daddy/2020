@@ -23,6 +23,7 @@ public class Map1 : MonoBehaviour, IMap
     public GameObject floor_exit;
     public GameObject floor_empty;
     public GameObject Parent;
+    public GameObject ImageTop;
     public Swipe Swipe;
 
     private int[][] _map;
@@ -81,7 +82,11 @@ public class Map1 : MonoBehaviour, IMap
                 }
             }
         }
-    }
+
+    ImageTop.transform.SetParent(Parent.transform.parent);
+    var now = ImageTop.GetComponent<RectTransform>();
+    now.localScale = new Vector3(1f, 1f, 0f);
+  }
 
   public void SetStartPosition()
   {

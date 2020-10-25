@@ -25,6 +25,7 @@ public class Map3_Invert2 : MonoBehaviour, IMap
   public GameObject floor_exit;
   public GameObject floor_empty;
   public GameObject Parent;
+  public GameObject ImageTop;
   public Swipe Swipe;
   public class StartPosition
   {
@@ -79,6 +80,9 @@ public class Map3_Invert2 : MonoBehaviour, IMap
         }
       }
     }
+    ImageTop.transform.SetParent(Parent.transform.parent);
+    var now = ImageTop.GetComponent<RectTransform>();
+    now.localScale = new Vector3(0.95f, 0.93f, 1f);
   }
 
   public int[][] ReadFromFile(string level)

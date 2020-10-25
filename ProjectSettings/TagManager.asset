@@ -13,7 +13,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - map_top
   - 
   - 
   - 
@@ -40,4 +40,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: map_top
+    uniqueID: 3914707641
+    locked: 0
+  - name: UI
+    uniqueID: 4243979811
     locked: 0
