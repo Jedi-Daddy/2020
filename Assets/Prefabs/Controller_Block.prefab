@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7442947058255593057}
   - component: {fileID: 7442947058255593062}
   - component: {fileID: 7442947058255593063}
+  - component: {fileID: 761787349090968251}
   m_Layer: 5
   m_Name: Controller_Block
   m_TagString: Untagged
@@ -85,6 +86,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae3544e97b1e4d41851d4235703cb52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
   MinVelocityThreshold: 20
   MinDistanceForSwipe: 100
+--- !u!114 &761787349090968251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7442947058255593061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b2f9ff038db191409afee3b3acd0909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
