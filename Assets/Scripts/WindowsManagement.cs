@@ -3,6 +3,7 @@ using UnityEngine.Video;
 using Unity;
 using UnityEngine.Experimental.UIElements;
 using Assets.Scripts;
+using System.Threading;
 
 public class WindowsManagement : MonoBehaviour
 {
@@ -16,6 +17,13 @@ public class WindowsManagement : MonoBehaviour
   public GameObject MenuRestart;
   public GameObject MenuNext;
 
+
+  public GameObject GameEndWin;
+  public GameObject EndLevel1;
+  public GameObject EndLevel2;
+  public GameObject EndLevel3;
+
+
   private int currentLevel = 0;
 
   void Start()
@@ -26,18 +34,22 @@ public class WindowsManagement : MonoBehaviour
     MenuNext.GetComponentInChildren<ButtonScriptExit>().ActionDelegate += ExitGame;
     MenuNext.GetComponentInChildren<ButtonScriptNext>().ActionDelegate += NextLevel;
 
-    Intro.active = true;
-    Level1.active = false;
-    Level2.active = false;
-    Level3.active = false;
-    Level4.active = false;
-    Loading.active = false;
-    MenuRestart.active = false;
-    MenuNext.active = false;
+    //Intro.active = true;
+    //Level1.active = false;
+    //Level2.active = false;
+    //Level3.active = false;
+    //Level4.active = false;
+    //Loading.active = false;
+    //MenuRestart.active = false;
+    //MenuNext.active = false;
+    //GameEndWin.active = false;
+    //EndLevel1.active = false;
+    //EndLevel2.active = false;
+    //EndLevel3.active = false;
     var introVideo = Intro.GetComponentInChildren<VideoPlayer>();
-    introVideo.Play();
-    introVideo.loopPointReached += ShowLoading1;
-    //StartLev1(introVideo);
+    //introVideo.Play();
+    //introVideo.loopPointReached += ShowLoading1;
+    StartLev3();
   }
 
   public void ShowLoading1(VideoPlayer vp)
@@ -239,30 +251,66 @@ public class WindowsManagement : MonoBehaviour
         SoundSystem.Instance.Play("Main Theme");
         PreloaderAnimator.Instance.Play("Start_Level");
     }
-  public void GameEnd()
-  {
-    Intro.active = true;
-    Level1.active = false;
-    Level2.active = false;
-    Level3.active = false;
-    Level4.active = false;
-    Loading.active = false;
-    var introVideo = Intro.GetComponentInChildren<VideoPlayer>();
-    introVideo.Play();
-    //introVideo.loopPointReached += ShowLoading1;
-  }
 
   public void ToNextLevel()
   {
-    Level1.active = false;
-    Level2.active = false;
-    Level3.active = false;
-    Level4.active = false;
-    MenuNext.active = true;
-  }
-  // Update is called once per frame
-  void Update()
+    switch (currentLevel)
     {
-        
+      case 1:
+        Level1Complete();
+        return;
+      case 2:
+        Level2Complete();
+        return;
+      case 3:
+        Level3Complete();
+        return;
+      case 4:
+        GameEndWinShow();
+        return;
     }
+  }
+
+  public void GameEndWinShow()
+  {
+    Level4.active = false;
+    GameEndWin.active = true;
+    var video = GameEndWin.GetComponentInChildren<VideoPlayer>();
+    video.Play();
+  }
+
+  public void Level1Complete()
+  {
+    Level1.active = false;
+    EndLevel1.active = true;
+    var video = EndLevel1.GetComponentInChildren<VideoPlayer>();
+    video.Play();
+    video.loopPointReached += ShowMenu;
+  }
+
+  public void ShowMenu(VideoPlayer vp)
+  {
+    vp.Stop();
+    MenuNext.active = true;
+    EndLevel1.active = false;
+    EndLevel2.active = false;
+    EndLevel3.active = false;
+    PreloaderAnimator.Instance.Play("Start_Level");
+  }
+  public void Level2Complete()
+  {
+    Level2.active = false;
+    EndLevel2.active = true;
+    var video = EndLevel2.GetComponentInChildren<VideoPlayer>();
+    video.Play();
+    video.loopPointReached += ShowMenu;
+  }
+  public void Level3Complete()
+  {
+    Level3.active = false;
+    EndLevel3.active = true;
+    var video = EndLevel3.GetComponentInChildren<VideoPlayer>();
+    video.Play();
+    video.loopPointReached += ShowMenu;
+  }
 }
