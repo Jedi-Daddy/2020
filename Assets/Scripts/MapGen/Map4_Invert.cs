@@ -84,6 +84,7 @@ public class Map4 : MonoBehaviour, IMap
     ImageTop.transform.SetParent(Parent.transform.parent);
     var now = ImageTop.GetComponent<RectTransform>();
     now.localScale = new Vector3(0.95f, 0.93f, 1f);
+    now.sizeDelta = new Vector3(0f, 0f, 0f);
   }
 
   public int[][] ReadFromFile(string level)

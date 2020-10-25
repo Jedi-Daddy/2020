@@ -87,7 +87,7 @@ public class Map2 : MonoBehaviour, IMap
     var now = ImageTop.GetComponent<RectTransform>();
     now = current;
     now.localScale = new Vector3(0.95f, 0.93f, 1f);
-    //now.anchoredPosition = 
+    now.sizeDelta = new Vector3(0f, 0f, 0f);
   }
 
   public int[][] ReadFromFile(string level)
