@@ -72,7 +72,7 @@ public class Map5_Human : MonoBehaviour, IMap
                         }
 
             var player = characterBlock.GetComponentInChildren<Player>();
-                        player.MovementDistance = 108;
+                        player.MovementDistance = 104;
                         player.SetPosition(x, y);
             player.SetMap(this);
             _characterBlock = characterBlock;
