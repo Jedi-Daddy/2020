@@ -9,6 +9,7 @@ public class WindowsManagement : MonoBehaviour
   public GameObject Level2;
   public GameObject Level3;
   public GameObject Level4;
+  public GameObject Level5;
   public GameObject Intro;
   public GameObject Loading;
 
@@ -43,6 +44,7 @@ public class WindowsManagement : MonoBehaviour
     Level2.active = false;
     Level3.active = false;
     Level4.active = false;
+    Level5.active = false;
     Loading.active = false;
     MenuRestart.active = false;
     MenuNext.active = false;
@@ -54,7 +56,6 @@ public class WindowsManagement : MonoBehaviour
     var introVideo = Intro.GetComponentInChildren<VideoPlayer>();
     introVideo.Play();
     introVideo.loopPointReached += ShowLogo;
-    //StartLev3();
   }
   public void ShowLogo(VideoPlayer vp)
   {
@@ -70,8 +71,6 @@ public class WindowsManagement : MonoBehaviour
     loadingVideo.loopPointReached += ShowLoading1;
   }
 
-
-
   public void ShowLoading1(VideoPlayer vp)
   {
     vp.Stop();
@@ -80,6 +79,7 @@ public class WindowsManagement : MonoBehaviour
     Level2.active = false;
     Level3.active = false;
     Level4.active = false;
+    Level5.active = false;
     Loading.active = true;
     Logo.active = false;
     var loadingVideo = Loading.GetComponentInChildren<VideoPlayer>();
@@ -123,6 +123,17 @@ public class WindowsManagement : MonoBehaviour
         loadingVideo.Play();
     loadingVideo.loopPointReached += StartLev4;
   }
+  public void ShowIntroLevel5()
+  {
+    MenuNext.active = false;
+    BeforeLevel4.active = true;
+    var loadingVideo = BeforeLevel4.GetComponentInChildren<VideoPlayer>();
+        var texture = new RenderTexture(1920, 1080, 1);
+        loadingVideo.targetTexture = texture;
+        loadingVideo.transform.parent.GetComponentInChildren<RawImage>().texture = texture;
+        loadingVideo.Play();
+    loadingVideo.loopPointReached += StartLev5;
+  }
   
   public void ShowEnd()
   {
@@ -130,6 +141,7 @@ public class WindowsManagement : MonoBehaviour
     Level2.active = false;
     Level3.active = false;
     Level4.active = false;
+    Level5.active = false;
     MenuRestart.active = true;
   }
   public void ShowRestart()
@@ -164,6 +176,17 @@ public class WindowsManagement : MonoBehaviour
         map42.SetStartPosition();
         ShowIntroLevel4();
         return;
+      case 5:
+        var map5_Human = Level5.GetComponentInChildren<Map5_Human>();
+        map5_Human.SetStartPosition();
+        var map5_Marsian = Level5.GetComponentInChildren<Map5_Marsian>();
+        map5_Marsian.SetStartPosition();
+        var map5_Barsuk = Level5.GetComponentInChildren<Map5_Barsuk>();
+        map5_Barsuk.SetStartPosition();
+        var map5_Jam = Level5.GetComponentInChildren<Map5_Jam>();
+        map5_Jam.SetStartPosition();
+        ShowIntroLevel5();
+        return;
     }
   }
 
@@ -181,6 +204,9 @@ public class WindowsManagement : MonoBehaviour
         ShowIntroLevel4();
         return;
       case 4:
+        ShowIntroLevel5();
+        return;
+      case 5:
         ShowEnd();
         return;
     }
@@ -201,12 +227,13 @@ public class WindowsManagement : MonoBehaviour
     Level2.active = false;
     Level3.active = false;
     Level4.active = false;
+    Level5.active = false;
     Loading.active = false;
     currentLevel = 1;
 
-        SoundSystem.Instance.Play("Main Theme");
-        PreloaderAnimator.Instance.Play("Start_Level");
-    }
+    SoundSystem.Instance.Play("Main Theme");
+    PreloaderAnimator.Instance.Play("Start_Level");
+  }
   public void StartLev1()
   {
     MenuRestart.active = false;
@@ -216,12 +243,13 @@ public class WindowsManagement : MonoBehaviour
     Level2.active = false;
     Level3.active = false;
     Level4.active = false;
+    Level5.active = false;
     Loading.active = false;
     currentLevel = 1;
 
-        SoundSystem.Instance.Play("Main Theme");
-        PreloaderAnimator.Instance.Play("Start_Level");
-    }
+    SoundSystem.Instance.Play("Main Theme");
+    PreloaderAnimator.Instance.Play("Start_Level");
+  }
 
   //public void StartLev2()
   //{
@@ -250,6 +278,7 @@ public class WindowsManagement : MonoBehaviour
     Level2.active = true;
     Level3.active = false;
     Level4.active = false;
+    Level5.active = false;
     Loading.active = false;
     currentLevel = 2;
 
@@ -283,6 +312,7 @@ public class WindowsManagement : MonoBehaviour
     Level2.active = false;
     Level3.active = true;
     Level4.active = false;
+    Level5.active = false;
     Loading.active = false;
     currentLevel = 3;
 
@@ -315,8 +345,27 @@ public class WindowsManagement : MonoBehaviour
     Level2.active = false;
     Level3.active = false;
     Level4.active = true;
+    Level5.active = false;
     Loading.active = false;
     currentLevel = 4;
+
+    SoundSystem.Instance.Play("Main Theme");
+  }
+  public void StartLev5(VideoPlayer vp)
+  {
+    vp.Stop();
+    GameEndWin.active = false;
+    BeforeLevel4.active = false;
+    MenuRestart.active = false;
+    MenuNext.active = false;
+    Intro.active = false;
+    Level1.active = false;
+    Level2.active = false;
+    Level3.active = false;
+    Level4.active = false;
+    Level5.active = true;
+    Loading.active = false;
+    currentLevel = 5;
 
     SoundSystem.Instance.Play("Main Theme");
   }
@@ -335,6 +384,9 @@ public class WindowsManagement : MonoBehaviour
         Level3Complete();
         return;
       case 4:
+        Level4Complete();
+        return;
+      case 5:
         GameEndWinShow();
         return;
     }
@@ -342,8 +394,8 @@ public class WindowsManagement : MonoBehaviour
 
   public void GameEndWinShow()
   {
-    Level4.active = false;
-    GameEndWin.active = true;
+        Level5.active = false;
+        GameEndWin.active = true;
     var video = GameEndWin.GetComponentInChildren<VideoPlayer>();
         var texture = new RenderTexture(1920, 1080, 1);
         video.targetTexture = texture;
@@ -372,6 +424,7 @@ public class WindowsManagement : MonoBehaviour
     EndLevel1.active = false;
     EndLevel2.active = false;
     EndLevel3.active = false;
+    GameEndWin.active = false;
     PreloaderAnimator.Instance.Play("Start_Level");
   }
   public void Level2Complete()
@@ -397,4 +450,15 @@ public class WindowsManagement : MonoBehaviour
         video.Play();
     video.loopPointReached += ShowMenu;
   }
+  public void Level4Complete()
+    {
+        Level4.active = false;
+        GameEndWin.active = true;
+        var video = GameEndWin.GetComponentInChildren<VideoPlayer>();
+        var texture = new RenderTexture(1920, 1080, 1);
+        video.targetTexture = texture;
+        video.transform.parent.GetComponentInChildren<RawImage>().texture = texture;
+        video.Play();
+        video.loopPointReached += ShowMenu;
+    }
 }
