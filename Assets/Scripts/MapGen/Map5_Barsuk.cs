@@ -8,16 +8,16 @@ public class Map5_Barsuk : MonoBehaviour, IMap
   private int[][] _map;
 
   private string level =
-@"0	0	0	0	5	0	1	0	0
-1	0	0	0	1	0	0	0	0
-1	0	0	0	0	0	0	0	0
+@"0	0	0	0	5	0	0	0	0
 0	0	0	0	0	1	0	0	0
-1	0	1	0	0	1	0	1	0
+0	0	0	0	0	0	1	0	0
 0	0	0	0	0	0	0	0	0
-0	0	1	0	0	0	0	0	0
-0	0	0	0	0	0	0	1	0
-2	0	0	1	0	0	1	0	0
-2	2	0	0	6	0	0	0	0";
+0	0	0	0	1	1	0	0	0
+2	1	0	0	0	0	0	1	0
+2	0	0	1	0	0	0	0	0
+0	0	1	1	0	0	0	0	0
+1	0	0	0	0	0	0	0	0
+1	0	0	0	0	2	2	0	6";
 
   public GameObject character;
   public GameObject floor_valid;
