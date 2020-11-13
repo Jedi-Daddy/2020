@@ -25,11 +25,12 @@ public class WindowsManagement : MonoBehaviour
   public GameObject BeforeLevel2;
   public GameObject BeforeLevel3;
   public GameObject BeforeLevel4;
+  public GameObject BeforeLevel5;
 
   public GameObject Logo;
 
 
-  private int currentLevel = 5;
+  private int currentLevel = 4;
 
   void Start()
     {
@@ -88,7 +89,7 @@ public class WindowsManagement : MonoBehaviour
     loadingVideo.transform.parent.GetComponentInChildren<RawImage>().texture = texture;
 
     loadingVideo.Play();
-    loadingVideo.loopPointReached += StartLev5;
+    loadingVideo.loopPointReached += StartLev4;
   }
   public void ShowIntroLevel2()
   {
@@ -126,8 +127,8 @@ public class WindowsManagement : MonoBehaviour
   public void ShowIntroLevel5()
   {
     MenuNext.active = false;
-    BeforeLevel4.active = true;
-    var loadingVideo = BeforeLevel4.GetComponentInChildren<VideoPlayer>();
+    BeforeLevel5.active = true;
+    var loadingVideo = BeforeLevel5.GetComponentInChildren<VideoPlayer>();
         var texture = new RenderTexture(1920, 1080, 1);
         loadingVideo.targetTexture = texture;
         loadingVideo.transform.parent.GetComponentInChildren<RawImage>().texture = texture;
@@ -355,7 +356,7 @@ public class WindowsManagement : MonoBehaviour
   {
     vp.Stop();
     GameEndWin.active = false;
-    BeforeLevel4.active = false;
+    BeforeLevel5.active = false;
     MenuRestart.active = false;
     MenuNext.active = false;
     Intro.active = false;
