@@ -30,7 +30,7 @@ public class WindowsManagement : MonoBehaviour
   public GameObject Logo;
 
 
-  private int currentLevel = 4;
+  private int currentLevel = 0;
 
   void Start()
     {
@@ -89,7 +89,7 @@ public class WindowsManagement : MonoBehaviour
     loadingVideo.transform.parent.GetComponentInChildren<RawImage>().texture = texture;
 
     loadingVideo.Play();
-    loadingVideo.loopPointReached += StartLev4;
+    loadingVideo.loopPointReached += StartLev1;
   }
   public void ShowIntroLevel2()
   {
