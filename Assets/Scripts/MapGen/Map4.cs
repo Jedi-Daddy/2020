@@ -8,7 +8,7 @@ public class Map4_Invert : MonoBehaviour, IMap
   private int[][] _map;
 
   private string level =
-@"1	0	0	0	6	1	0	0	0
+@"1	0	0	0	5	1	0	0	0
 1	0	2	0	0	0	0	2	0
 0	0	0	0	0	0	0	0	0
 0	1	0	0	0	0	0	0	2
@@ -17,7 +17,7 @@ public class Map4_Invert : MonoBehaviour, IMap
 0	2	0	0	1	2	2	0	1
 0	2	0	0	0	0	0	0	0
 0	0	0	0	1	0	1	0	0
-0	1	0	0	5	0	1	1	0";
+0	1	0	0	6	0	1	1	0";
 
   public GameObject character;
   public GameObject floor_valid;
